@@ -1,0 +1,306 @@
+@prefix : <http://www.w3.org/2011/http-statusCodes#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix http: <http://www.w3.org/2011/http#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:StatusCode1xx a rdfs:Class ;
+    rdfs:label "Informational"@en ;
+    rdfs:comment "A status code starting with 1"@en .
+
+:StatusCode2xx a rdfs:Class ;
+    rdfs:label "Successful"@en ;
+    rdfs:comment "A status code starting with 2"@en .
+
+:StatusCode3xx a rdfs:Class ;
+    rdfs:label "Redirection"@en ;
+    rdfs:comment "A status code starting with 3"@en .
+
+:StatusCode4xx a rdfs:Class ;
+    rdfs:label "Client Error"@en ;
+    rdfs:comment "A status code starting with 4"@en .
+
+:StatusCode5xx a rdfs:Class ;
+    rdfs:label "Server Error"@en ;
+    rdfs:comment "A status code starting with 5"@en .
+
+:Accepted a http:StatusCode, :StatusCode2xx ;
+    dcterms:title "Accepted"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "202" .
+
+:BadGateway a http:StatusCode, :StatusCode5xx ;
+    dcterms:title "Bad Gateway"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "502" .
+
+:BadRequest a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Bad Request"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "400" .
+
+:Conflict a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Conflict"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "409" .
+
+:Continue a http:StatusCode, :StatusCode1xx ;
+    dcterms:title "Continue"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "100" .
+
+:Created a http:StatusCode, :StatusCode2xx ;
+    dcterms:title "Created"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "201" .
+
+:ExpectationFailed a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Expectation Failed"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "417" .
+
+:FailedDependency a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Failed Dependency"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc4918.txt> ;
+    http:statusCodeNumber "424" .
+
+:Forbidden a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Forbidden"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "403" .
+
+:Found a http:StatusCode, :StatusCode3xx ;
+    dcterms:title "Found"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "302" .
+
+:GatewayTimeout a http:StatusCode, :StatusCode5xx ;
+    dcterms:title "Gateway Timeout"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "504" .
+
+:Gone a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Gone"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "410" .
+
+:HTTPVersionNotSupported a http:StatusCode, :StatusCode5xx ;
+    dcterms:title "HTTP Version Not Supported"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "505" .
+
+:IMUsed a http:StatusCode, :StatusCode2xx ;
+    dcterms:title "IM Used"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc3229.txt> ;
+    http:statusCodeNumber "226" .
+
+:InsufficientStorage a http:StatusCode, :StatusCode5xx ;
+    dcterms:title "Insufficient Storage"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc4918.txt> ;
+    http:statusCodeNumber "507" .
+
+:InternalServerError a http:StatusCode, :StatusCode5xx ;
+    dcterms:title "Internal Server Error"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "500" .
+
+:LengthRequired a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Length Required"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "411" .
+
+:Locked a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Locked"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc4918.txt> ;
+    http:statusCodeNumber "423" .
+
+:MethodNotAllowed a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Method Not Allowed"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "405" .
+
+:MovedPermanently a http:StatusCode, :StatusCode3xx ;
+    dcterms:title "Moved Permanently"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "301" .
+
+:MultiStatus a http:StatusCode, :StatusCode2xx ;
+    dcterms:title "Multi-Status"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc4918.txt> ;
+    http:statusCodeNumber "207" .
+
+:MultipleChoices a http:StatusCode, :StatusCode3xx ;
+    dcterms:title "Multiple Choices"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "300" .
+
+:NoContent a http:StatusCode, :StatusCode2xx ;
+    dcterms:title "No Content"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "204" .
+
+:NonAuthoritativeInformation a http:StatusCode, :StatusCode2xx ;
+    dcterms:title "Non-Authoritative Information"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "203" .
+
+:NotAcceptable a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Not Acceptable"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "406" .
+
+:NotExtended a http:StatusCode, :StatusCode5xx ;
+    dcterms:title "Not Extended"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2774.txt> ;
+    http:statusCodeNumber "510" .
+
+:NotFound a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Not Found"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "404" .
+
+:NotImplemented a http:StatusCode, :StatusCode5xx ;
+    dcterms:title "Not Implemented"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "501" .
+
+:NotModified a http:StatusCode, :StatusCode3xx ;
+    dcterms:title "Not Modified"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "304" .
+
+:OK a http:StatusCode, :StatusCode2xx ;
+    dcterms:title "OK"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "200" .
+
+:PartialContent a http:StatusCode, :StatusCode2xx ;
+    dcterms:title "Partial Content"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "206" .
+
+:PaymentRequired a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Payment Required"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "402" .
+
+:PreconditionFailed a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Precondition Failed"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "412" .
+
+:Processing a http:StatusCode, :StatusCode1xx ;
+    dcterms:title "Processing"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2518.txt> ;
+    http:statusCodeNumber "102" .
+
+:ProxyAuthenticationRequired a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Proxy Authentication Required"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "407" .
+
+:RequestEntityTooLarge a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Request Entity Too Large"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "413" .
+
+:RequestTimeout a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Request Timeout"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "408" .
+
+:RequestURITooLong a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Request-URI Too Long"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "414" .
+
+:RequestedRangeNotSatisfiable a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Requested Range Not Satisfiable"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "416" .
+
+:Reserved a http:StatusCode, :StatusCode3xx ;
+    dcterms:title "(Reserved)"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "306" .
+
+:ResetContent a http:StatusCode, :StatusCode2xx ;
+    dcterms:title "Reset Content"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "205" .
+
+:SeeOther a http:StatusCode, :StatusCode3xx ;
+    dcterms:title "See Other"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "303" .
+
+:ServiceUnavailable a http:StatusCode, :StatusCode5xx ;
+    dcterms:title "Service Unavailable"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "503" .
+
+:SwitchingProtocols a http:StatusCode, :StatusCode1xx ;
+    dcterms:title "Switching Protocols"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "101" .
+
+:TemporaryRedirect a http:StatusCode, :StatusCode3xx ;
+    dcterms:title "Temporary Redirect"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "307" .
+
+:Unauthorized a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Unauthorized"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "401" .
+
+:UnprocessableEntity a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Unprocessable Entity"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc4918.txt> ;
+    http:statusCodeNumber "422" .
+
+:UnsupportedMediaType a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Unsupported Media Type"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "415" .
+
+:UpgradeRequired a http:StatusCode, :StatusCode4xx ;
+    dcterms:title "Upgrade Required"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2817.txt> ;
+    http:statusCodeNumber "426" .
+
+:UseProxy a http:StatusCode, :StatusCode3xx ;
+    dcterms:title "Use Proxy"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    http:statusCodeNumber "305" .
+
+:VariantAlsoNegotiates a http:StatusCode, :StatusCode5xx ;
+    dcterms:title "Variant Also Negotiates (Experimental)"@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2295.txt> ;
+    http:statusCodeNumber "506" .
+
+<http://www.ietf.org/rfc/rfc2518.txt>
+    dcterms:identifier "http://www.ietf.org/rfc/rfc2518.txt" ;
+    dcterms:title "HTTP Extensions for Distributed Authoring -- WEBDAV"@en .
+
+<http://www.ietf.org/rfc/rfc2774.txt>
+    dcterms:identifier "http://www.ietf.org/rfc/rfc2774.txt" ;
+    dcterms:title "An HTTP Extension Framework"@en .
+
+<http://www.ietf.org/rfc/rfc2817.txt>
+    dcterms:identifier "http://www.ietf.org/rfc/rfc2817.txt" ;
+    dcterms:title "Upgrading to TLS Within HTTP/1.1"@en .
+
+<http://www.ietf.org/rfc/rfc3229.txt>
+    dcterms:identifier "http://www.ietf.org/rfc/rfc3229.txt" ;
+    dcterms:title "Delta encoding in HTTP"@en .
+
+<http://www.ietf.org/rfc/rfc4918.txt>
+    dcterms:identifier "http://www.ietf.org/rfc/rfc4918.txt" ;
+    dcterms:title "HTTP Extensions for Distributed Authoring - WebDAV"@en .
+
+<http://www.ietf.org/rfc/rfc2616.txt>
+    dcterms:identifier "http://www.ietf.org/rfc/rfc2616.txt" ;
+    dcterms:title "Hypertext Transfer Protocol -- HTTP/1.1"@en .
