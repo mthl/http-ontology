@@ -220,7 +220,7 @@
     rdfs:comment "The status code of an HTTP response."@en ;
     rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> .
 
-:sc a owl:ObjectProperty ;
+:sc a owl:ObjectProperty, owl:FunctionalProperty ;
     rdfs:label "Status code"@en ;
     rdfs:comment "The status code of an HTTP response."@en ;
     rdfs:domain :Response ;
@@ -233,7 +233,7 @@
     owl:onDatatype xsd:positiveInteger ;
     owl:withRestrictions ([ xsd:totalDigits 3 ]) .
 
-:statusCodeNumber a owl:DatatypeProperty ;
+:statusCodeNumber a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:subPropertyOf dc:identifier ;
     rdfs:label "Status code"@en ;
     rdfs:comment "The status code number."@en ;
@@ -241,7 +241,7 @@
     rdfs:range :threeDigit ;
     rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> .
 
-:statusCodeValue a owl:DatatypeProperty ;
+:statusCodeValue a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Status code"@en ;
     rdfs:comment "The status code value of an HTTP response."@en ;
     rdfs:domain :Response ;
