@@ -242,4 +242,5 @@
     rdfs:comment "The status code value of an HTTP response."@en ;
     rdfs:domain :Response ;
     rdfs:range :threeDigit ;
+    owl:propertyChainAxiom (:sc :statusCodeNumber) ;
     rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> .
