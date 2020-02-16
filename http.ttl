@@ -14,70 +14,70 @@
     rdfs:seeAlso <http://www.w3.org/WAI/intro/earl>,
         <http://www.w3.org/TR/Content-in-RDF/> .
 
-:Connection a rdfs:Class, owl:Class ;
+:Connection a owl:Class ;
     rdfs:label "Connection"@en ;
     rdfs:comment "A connection used for HTTP transfer."@en ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
-:EntityHeader a rdfs:Class, owl:Class ;
+:EntityHeader a owl:Class ;
     rdfs:subClassOf :MessageHeader ;
     rdfs:label "Entity Header"@en ;
     rdfs:comment "An entity header in an HTTP message."@en .
 
-:GeneralHeader a rdfs:Class, owl:Class ;
+:GeneralHeader a owl:Class ;
     rdfs:subClassOf :MessageHeader ;
     rdfs:label "General Header"@en ;
     rdfs:comment "A general header in an HTTP message."@en.
 
-:HeaderElement a rdfs:Class, owl:Class ;
+:HeaderElement a owl:Class ;
     rdfs:label "Header Element"@en ;
     rdfs:comment "A part of a deconstructed header value."@en .
 
-:HeaderName a rdfs:Class, owl:Class ;
+:HeaderName a owl:Class ;
     rdfs:label "Header Name"@en ;
     rdfs:comment "A header name."@en .
 
-:Message a rdfs:Class, owl:Class ;
+:Message a owl:Class ;
     rdfs:label "Message"@en ;
     rdfs:comment "An HTTP message."@en ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
-:MessageHeader a rdfs:Class, owl:Class ;
+:MessageHeader a owl:Class ;
     rdfs:label "Message Header"@en ;
     rdfs:comment "A header in an HTTP message."@en .
 
-:Method a rdfs:Class, owl:Class ;
+:Method a owl:Class ;
     rdfs:label "Method"@en ;
     rdfs:comment "The HTTP method used for the request."@en ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
-:Parameter a rdfs:Class, owl:Class ;
+:Parameter a owl:Class ;
     rdfs:comment "A parameter for a part of a header value."@en ;
     rdfs:label "Parameter"@en .
 
-:Request a rdfs:Class, owl:Class ;
+:Request a owl:Class ;
     rdfs:label "Request"@en ;
     rdfs:comment "An HTTP request."@en ;
     rdfs:subClassOf :Message ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
-:RequestHeader a rdfs:Class, owl:Class ;
+:RequestHeader a owl:Class ;
     rdfs:subClassOf :MessageHeader ;
     rdfs:label "Request Header"@en ;
     rdfs:comment "A header in an HTTP request message."@en .
 
-:Response a rdfs:Class, owl:Class ;
+:Response a owl:Class ;
     rdfs:label "Response"@en ;
     rdfs:comment "An HTTP response."@en ;
     rdfs:subClassOf :Message ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
-:ResponseHeader a rdfs:Class, owl:Class ;
+:ResponseHeader a owl:Class ;
     rdfs:label "Response Header"@en ;
     rdfs:comment "A header in an HTTP response message."@en ;
     rdfs:subClassOf :MessageHeader .
 
-:StatusCode a rdfs:Class, owl:Class ;
+:StatusCode a owl:Class ;
     rdfs:label "Status code"@en ;
     rdfs:comment "The status code of an HTTP response."@en ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
