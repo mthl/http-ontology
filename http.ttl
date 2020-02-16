@@ -77,11 +77,6 @@
     rdfs:comment "A header in an HTTP response message."@en ;
     rdfs:subClassOf :MessageHeader .
 
-:StatusCode a owl:Class ;
-    rdfs:label "Status code"@en ;
-    rdfs:comment "The status code of an HTTP response."@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
-
 :absoluteURI a rdf:Property ;
     rdfs:label "Absolute URI"@en ;
     rdfs:comment "The absolute request URI."@en ;
@@ -216,12 +211,21 @@
     rdfs:range :Response ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
+## ------------ ##
+## Status codes ##
+## ------------ ##
+
+:StatusCode a owl:Class ;
+    rdfs:label "Status code"@en ;
+    rdfs:comment "The status code of an HTTP response."@en ;
+    rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> .
+
 :sc a owl:ObjectProperty ;
     rdfs:label "Status code"@en ;
     rdfs:comment "The status code of an HTTP response."@en ;
     rdfs:domain :Response ;
     rdfs:range :StatusCode ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+    rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> .
 
 :threeDigit a rdfs:Datatype ;
     rdfs:label "3-digit integer"@en ;
