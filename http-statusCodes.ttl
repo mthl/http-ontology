@@ -1,4 +1,5 @@
 @prefix : <http://www.w3.org/2011/http-statusCodes#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix http: <http://www.w3.org/2011/http#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -6,25 +7,38 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:StatusCode1xx a rdfs:Class ;
+## ------------------- ##
+## Status code classes ##
+## ------------------- ##
+
+:StatusCode1xx a owl:Class ;
+    owl:subClassOf http:StatusCode ;
     rdfs:label "Informational"@en ;
     rdfs:comment "A status code starting with 1"@en .
 
-:StatusCode2xx a rdfs:Class ;
+:StatusCode2xx a owl:Class ;
+    owl:subClassOf http:StatusCode ;
     rdfs:label "Successful"@en ;
     rdfs:comment "A status code starting with 2"@en .
 
-:StatusCode3xx a rdfs:Class ;
+:StatusCode3xx a owl:Class ;
+    owl:subClassOf http:StatusCode ;
     rdfs:label "Redirection"@en ;
     rdfs:comment "A status code starting with 3"@en .
 
-:StatusCode4xx a rdfs:Class ;
+:StatusCode4xx a owl:Class ;
+    owl:subClassOf http:StatusCode ;
     rdfs:label "Client Error"@en ;
     rdfs:comment "A status code starting with 4"@en .
 
-:StatusCode5xx a rdfs:Class ;
+:StatusCode5xx a owl:Class ;
+    owl:subClassOf http:StatusCode ;
     rdfs:label "Server Error"@en ;
     rdfs:comment "A status code starting with 5"@en .
+
+## ----------------------- ##
+## Status code individuals ##
+## ----------------------- ##
 
 :Accepted a http:StatusCode, :StatusCode2xx ;
     dcterms:title "Accepted"@en ;
