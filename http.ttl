@@ -223,17 +223,23 @@
     rdfs:range :StatusCode ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
+:threeDigit a rdfs:Datatype ;
+    rdfs:label "3-digit integer"@en ;
+    rdfs:comment "A positive integer consisting in three digit" ;
+    owl:onDatatype xsd:positiveInteger ;
+    owl:withRestrictions ([ xsd:totalDigits 3 ]) .
+
 :statusCodeNumber a owl:DatatypeProperty ;
     rdfs:subPropertyOf dc:identifier ;
     rdfs:label "Status code"@en ;
     rdfs:comment "The status code number."@en ;
     rdfs:domain :StatusCode ;
-    rdfs:range xsd:int ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+    rdfs:range :threeDigit ;
+    rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> .
 
 :statusCodeValue a owl:DatatypeProperty ;
     rdfs:label "Status code"@en ;
     rdfs:comment "The status code value of an HTTP response."@en ;
     rdfs:domain :Response ;
-    rdfs:range rdfs:Literal ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+    rdfs:range :threeDigit ;
+    rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> .
