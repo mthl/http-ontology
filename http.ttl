@@ -97,30 +97,37 @@
 ## URI. ##
 ## ---- ##
 
-:requestURI a owl:DatatypeProperty ;
+:target a owl:DatatypeProperty ;
     rdfs:label "Request URI"@en ;
-    rdfs:comment "The request URI of an HTTP request."@en ;
+    rdfs:comment "The literal target URI present in the request line."@en ;
     rdfs:domain :Request ;
     rdfs:range rdfs:Literal ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
-:absoluteURI a rdf:Property ;
-    rdfs:label "Absolute URI"@en ;
-    rdfs:comment "The absolute request URI."@en ;
-    rdfs:subPropertyOf :requestURI .
+:uri a owl:ObjectProperty ;
+    rdfs:label "Request effective URI" ;
+    rdfs:domain :Request ;
+    rdfs:range owl:Thing .
 
-:absolutePath a rdf:Property ;
-    rdfs:label "Absolute path"@en ;
-    rdfs:comment "The absolute path sort of request URI."@en ;
-    rdfs:subPropertyOf :requestURI .
-
-:effectiveURI a owl:ObjectProperty ;
-    rdfs:label "Request effective URI".
+:scheme a owl:DatatypeProperty ;
+    rdfs:label "Scheme"@en ;
+    rdfs:comment "The scheme part of an URI."@en .
 
 :authority a owl:DatatypeProperty ;
     rdfs:label "Authority"@en ;
-    rdfs:comment "The authority sort of request URI."@en ;
-    rdfs:subPropertyOf :requestURI .
+    rdfs:comment "The authority part of an URI."@en .
+
+:path a owl:DatatypeProperty ;
+    rdfs:label "Scheme"@en ;
+    rdfs:comment "The path part of an URI."@en .
+
+:query a owl:DatatypeProperty ;
+    rdfs:label "Scheme"@en ;
+    rdfs:comment "The query part of an URI."@en .
+
+:fragment a owl:DatatypeProperty ;
+    rdfs:label "Scheme"@en ;
+    rdfs:comment "The fragmen part of an URI."@en .
 
 ## -------- ##
 ## Headers. ##
@@ -134,7 +141,7 @@
 :GeneralHeader a owl:Class ;
     rdfs:subClassOf :MessageHeader ;
     rdfs:label "General Header"@en ;
-    rdfs:comment "A general header in an HTTP message."@en.
+    rdfs:comment "A general header in an HTTP message."@en .
 
 :HeaderElement a owl:Class ;
     rdfs:label "Header Element"@en ;
