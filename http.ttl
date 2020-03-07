@@ -1,4 +1,5 @@
 @prefix : <http://www.w3.org/2011/http#> .
+@prefix sc: <http://www.w3.org/2011/http-statusCodes#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -10,7 +11,6 @@
     rdfs:comment "A namespace for describing HTTP messages (http://www.w3.org/Protocols/rfc2616/rfc2616.html)"@en ;
     owl:versionInfo "Working Draft 29 April 2011"@en ;
     rdfs:isDefinedBy <http://www.w3.org/TR/HTTP-in-RDF/> ;
-    owl:imports dc:, <http://www.w3.org/2011/content#> ;
     rdfs:seeAlso <http://www.w3.org/WAI/intro/earl>,
         <http://www.w3.org/TR/Content-in-RDF/> .
 
@@ -217,34 +217,94 @@
 
 :StatusCode a owl:Class ;
     rdfs:label "Status code"@en ;
-    rdfs:comment "The status code of an HTTP response."@en ;
-    rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> .
+    owl:equivalentClass [
+        rdf:type owl:Restriction ;
+        owl:onProperty :statusCodeNumber ;
+        owl:cardinality 1 ;
+        owl:someValuesFrom :threeDigit ;
+        ] ;
+    rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> ;
+    rdfs:comment "The status code of an HTTP response."@en .
 
 :sc a owl:ObjectProperty, owl:FunctionalProperty ;
     rdfs:label "Status code"@en ;
-    rdfs:comment "The status code of an HTTP response."@en ;
     rdfs:domain :Response ;
     rdfs:range :StatusCode ;
-    rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> .
+    rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> ;
+    rdfs:comment "The status code of an HTTP response."@en .
 
 :threeDigit a rdfs:Datatype ;
     rdfs:label "3-digit integer"@en ;
     rdfs:comment "A positive integer consisting in three digit" ;
-    owl:onDatatype xsd:positiveInteger ;
-    owl:withRestrictions ([ xsd:totalDigits 3 ]) .
+    owl:equivalentClass [
+        a rdfs:Datatype ;
+        owl:onDatatype xsd:nonNegativeInteger ;
+        owl:withRestrictions ([ xsd:maxInclusive 999])] .
 
 :statusCodeNumber a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:subPropertyOf dc:identifier ;
-    rdfs:label "Status code"@en ;
-    rdfs:comment "The status code number."@en ;
+    rdfs:label "Status code number"@en ;
     rdfs:domain :StatusCode ;
     rdfs:range :threeDigit ;
-    rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> .
+    rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> ;
+    rdfs:comment "The status code number."@en .
 
-:statusCodeValue a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:label "Status code"@en ;
-    rdfs:comment "The status code value of an HTTP response."@en ;
-    rdfs:domain :Response ;
-    rdfs:range :threeDigit ;
-    owl:propertyChainAxiom (:sc :statusCodeNumber) ;
-    rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> .
+sc:Informational a owl:Class ;
+    owl:equivalentClass [ owl:intersectionOf (:StatusCode [
+                rdf:type owl:Restriction ;
+                owl:onProperty :statusCodeNumber ;
+                owl:someValuesFrom [
+                    rdf:type rdfs:Datatype ;
+                    owl:onDatatype xsd:integer ;
+                    owl:withRestrictions ([ xsd:minInclusive 100] [ xsd:maxInclusive 199])]])
+        ] ;
+    rdfs:label "Status code denoting an informational response"@en ;
+    rdfs:comment "A status code starting with 1"@en .
+
+sc:Successful a owl:Class ;
+    owl:equivalentClass [ owl:intersectionOf (:StatusCode [
+                rdf:type owl:Restriction ;
+                owl:onProperty :statusCodeNumber ;
+                owl:someValuesFrom [
+                    rdf:type rdfs:Datatype ;
+                    owl:onDatatype xsd:integer ;
+                    owl:withRestrictions ([ xsd:minInclusive 200] [ xsd:maxInclusive 299])]])
+        ] ;
+    rdfs:label "Status code denoting a successful interaction"@en ;
+    rdfs:comment "A status code starting with 2"@en .
+
+sc:Redirection a owl:Class ;
+    owl:equivalentClass [ owl:intersectionOf (:StatusCode [
+                rdf:type owl:Restriction ;
+                owl:onProperty :statusCodeNumber ;
+                owl:someValuesFrom [
+                    rdf:type rdfs:Datatype ;
+                    owl:onDatatype xsd:integer ;
+                    owl:withRestrictions ([ xsd:minInclusive 300] [ xsd:maxInclusive 399])]])
+        ] ;
+    rdfs:label "Redirection"@en ;
+    rdfs:comment "A status code starting with 3"@en .
+
+sc:ClientError a owl:Class ;
+    owl:equivalentClass [ owl:intersectionOf (:StatusCode [
+                rdf:type owl:Restriction ;
+                owl:onProperty :statusCodeNumber ;
+                owl:someValuesFrom [
+                    rdf:type rdfs:Datatype ;
+                    owl:onDatatype xsd:integer ;
+                    owl:withRestrictions ([ xsd:minInclusive 400] [ xsd:maxInclusive 499])]])
+        ] ;
+    rdfs:label "Client Error"@en ;
+    rdfs:comment "A status code starting with 4"@en .
+
+sc:ServerError a owl:Class ;
+    owl:equivalentClass [ owl:intersectionOf (:StatusCode [
+                rdf:type owl:Restriction ;
+                owl:onProperty :statusCodeNumber ;
+                owl:someValuesFrom [
+                    rdf:type rdfs:Datatype ;
+                    owl:onDatatype xsd:integer ;
+                    owl:withRestrictions ([ xsd:minInclusive 500] [ xsd:maxInclusive 599])]])
+        ] ;
+    rdfs:label "Server Error"@en ;
+    rdfs:comment "A status code starting with 5"@en .
