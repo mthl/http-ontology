@@ -55,8 +55,76 @@
 :Response a owl:Class ;
     rdfs:label "Response"@en ;
     rdfs:comment "An HTTP response."@en ;
-    rdfs:subClassOf :Message ;
+    rdfs:subClassOf [
+        owl:intersectionOf (:Message [
+                rdf:type owl:Restriction ;
+                owl:onProperty :sc ;
+                owl:cardinality 1 ;
+                owl:someValuesFrom :StatusCode ;
+                ])] ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+
+:resp a owl:ObjectProperty ;
+    rdfs:label "Response"@en ;
+    rdfs:comment "The HTTP response sent in answer to an HTTP request."@en ;
+    rdfs:domain :Request ;
+    rdfs:range :Response .
+
+## ------- ##
+## Method. ##
+## ------- ##
+
+:Method a owl:Class ;
+    rdfs:label "Method"@en ;
+    rdfs:comment "The HTTP method used for the request."@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+
+:mthd a owl:ObjectProperty ;
+    rdfs:label "Method"@en ;
+    rdfs:comment "The HTTP method used for the HTTP request."@en ;
+    rdfs:domain :Request ;
+    rdfs:range :Method ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+
+:methodName a owl:DatatypeProperty ;
+    rdfs:label "Method name"@en ;
+    rdfs:comment "The HTTP method name used for the HTTP request."@en ;
+    rdfs:domain :Method ;
+    rdfs:range rdfs:Literal ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+
+## ---- ##
+## URI. ##
+## ---- ##
+
+:requestURI a owl:DatatypeProperty ;
+    rdfs:label "Request URI"@en ;
+    rdfs:comment "The request URI of an HTTP request."@en ;
+    rdfs:domain :Request ;
+    rdfs:range rdfs:Literal ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+
+:absoluteURI a rdf:Property ;
+    rdfs:label "Absolute URI"@en ;
+    rdfs:comment "The absolute request URI."@en ;
+    rdfs:subPropertyOf :requestURI .
+
+:absolutePath a rdf:Property ;
+    rdfs:label "Absolute path"@en ;
+    rdfs:comment "The absolute path sort of request URI."@en ;
+    rdfs:subPropertyOf :requestURI .
+
+:effectiveURI a owl:ObjectProperty ;
+    rdfs:label "Request effective URI".
+
+:authority a owl:DatatypeProperty ;
+    rdfs:label "Authority"@en ;
+    rdfs:comment "The authority sort of request URI."@en ;
+    rdfs:subPropertyOf :requestURI .
+
+## -------- ##
+## Headers. ##
+## -------- ##
 
 :EntityHeader a owl:Class ;
     rdfs:subClassOf :MessageHeader ;
@@ -80,11 +148,6 @@
     rdfs:label "Message Header"@en ;
     rdfs:comment "A header in an HTTP message."@en .
 
-:Method a owl:Class ;
-    rdfs:label "Method"@en ;
-    rdfs:comment "The HTTP method used for the request."@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
-
 :Parameter a owl:Class ;
     rdfs:comment "A parameter for a part of a header value."@en ;
     rdfs:label "Parameter"@en .
@@ -98,28 +161,6 @@
     rdfs:label "Response Header"@en ;
     rdfs:comment "A header in an HTTP response message."@en ;
     rdfs:subClassOf :MessageHeader .
-
-:absoluteURI a rdf:Property ;
-    rdfs:label "Absolute URI"@en ;
-    rdfs:comment "The absolute request URI."@en ;
-    rdfs:subPropertyOf :requestURI .
-
-:absolutePath a rdf:Property ;
-    rdfs:label "Absolute path"@en ;
-    rdfs:comment "The absolute path sort of request URI."@en ;
-    rdfs:subPropertyOf :requestURI .
-
-:authority a rdf:Property ;
-    rdfs:label "Authority"@en ;
-    rdfs:comment "The authority sort of request URI."@en ;
-    rdfs:subPropertyOf :requestURI .
-
-:body a owl:ObjectProperty ;
-    rdfs:label "Entity Body"@en ;
-    rdfs:comment "The entity body of an HTTP message."@en ;
-    rdfs:domain :Message ;
-    rdfs:range <http://www.w3.org/2011/content#Content> ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
 :connectionAuthority a owl:DatatypeProperty ;
     rdfs:label "Connection authority"@en ;
@@ -175,20 +216,6 @@
     rdfs:range rdfs:Literal ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
-:mthd a owl:ObjectProperty ;
-    rdfs:label "Method"@en ;
-    rdfs:comment "The HTTP method used for the HTTP request."@en ;
-    rdfs:domain :Request ;
-    rdfs:range :Method ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
-
-:methodName a owl:DatatypeProperty ;
-    rdfs:label "Method name"@en ;
-    rdfs:comment "The HTTP method name used for the HTTP request."@en ;
-    rdfs:domain :Request ;
-    rdfs:range rdfs:Literal ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
-
 :paramName a owl:DatatypeProperty ;
     rdfs:label "Parameter name"@en ;
     rdfs:comment "The name of a parameter in a part of a deconstructed HTTP header value."@en ;
@@ -219,18 +246,15 @@
     rdfs:domain :Connection ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
-:requestURI a owl:DatatypeProperty ;
-    rdfs:label "Request URI"@en ;
-    rdfs:comment "The request URI of an HTTP request."@en ;
-    rdfs:domain :Request ;
-    rdfs:range rdfs:Literal ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+## -------- ##
+## Content. ##
+## -------- ##
 
-:resp a owl:ObjectProperty ;
-    rdfs:label "Response"@en ;
-    rdfs:comment "The HTTP response sent in answer to an HTTP request."@en ;
-    rdfs:domain :Request ;
-    rdfs:range :Response ;
+:body a owl:ObjectProperty ;
+    rdfs:label "Entity Body"@en ;
+    rdfs:comment "The entity body of an HTTP message."@en ;
+    rdfs:domain :Message ;
+    rdfs:range <http://www.w3.org/2011/content#Content> ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
 ## ------------ ##
