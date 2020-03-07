@@ -35,7 +35,17 @@
 :Request a owl:Class ;
     rdfs:label "Request"@en ;
     rdfs:comment "An HTTP request."@en ;
-    rdfs:subClassOf :Message ;
+    rdfs:subClassOf [
+        owl:intersectionOf (:Message [
+                rdf:type owl:Restriction ;
+                owl:onProperty :mthd ;
+                owl:cardinality 1 ;
+                owl:someValuesFrom :Method ;
+                ] [
+                rdf:type owl:Restriction ;
+                owl:onProperty :target ;
+                owl:cardinality 1 ;
+                ])] ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
 :Response a owl:Class ;
