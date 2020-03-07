@@ -15,6 +15,10 @@
     rdfs:seeAlso <http://www.w3.org/WAI/intro/earl>,
         <http://www.w3.org/TR/Content-in-RDF/> .
 
+## --------- ##
+## Messages. ##
+## --------- ##
+
 :Message a owl:AllDisjointClasses ;
     rdfs:label "Message"@en ;
     rdfs:comment "An HTTP message."@en ;
@@ -52,11 +56,6 @@
     rdfs:label "Response"@en ;
     rdfs:comment "An HTTP response."@en ;
     rdfs:subClassOf :Message ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
-
-:Connection a owl:Class ;
-    rdfs:label "Connection"@en ;
-    rdfs:comment "A connection used for HTTP transfer."@en ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
 :EntityHeader a owl:Class ;
@@ -588,3 +587,12 @@ sc:VariantAlsoNegotiates a :StatusCode ;
     dcterms:title "Variant Also Negotiates (Experimental)"@en ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2295.txt> ;
     :statusCodeNumber 506 .
+
+## ----- ##
+## Misc. ##
+## ----- ##
+
+:Connection a owl:Class ;
+    rdfs:label "Connection"@en ;
+    rdfs:comment "A connection used for HTTP transfer."@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
