@@ -15,6 +15,35 @@
     rdfs:seeAlso <http://www.w3.org/WAI/intro/earl>,
         <http://www.w3.org/TR/Content-in-RDF/> .
 
+:Message a owl:AllDisjointClasses ;
+    rdfs:label "Message"@en ;
+    rdfs:comment "An HTTP message."@en ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    owl:members (:Request :Response) ;
+    rdfs:subClassOf [
+        owl:intersectionOf ([
+                rdf:type owl:Restriction ;
+                owl:onProperty :body ;
+                owl:cardinality 1 ;
+                owl:allValuesFrom <http://www.w3.org/2011/content#Content> ;
+                ] [
+                rdf:type owl:Restriction ;
+                owl:onProperty :headers ;
+                owl:allValuesFrom :MessageHeader;
+                ])] .
+
+:Request a owl:Class ;
+    rdfs:label "Request"@en ;
+    rdfs:comment "An HTTP request."@en ;
+    rdfs:subClassOf :Message ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+
+:Response a owl:Class ;
+    rdfs:label "Response"@en ;
+    rdfs:comment "An HTTP response."@en ;
+    rdfs:subClassOf :Message ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+
 :Connection a owl:Class ;
     rdfs:label "Connection"@en ;
     rdfs:comment "A connection used for HTTP transfer."@en ;
@@ -38,11 +67,6 @@
     rdfs:label "Header Name"@en ;
     rdfs:comment "A header name."@en .
 
-:Message a owl:Class ;
-    rdfs:label "Message"@en ;
-    rdfs:comment "An HTTP message."@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
-
 :MessageHeader a owl:Class ;
     rdfs:label "Message Header"@en ;
     rdfs:comment "A header in an HTTP message."@en .
@@ -56,22 +80,10 @@
     rdfs:comment "A parameter for a part of a header value."@en ;
     rdfs:label "Parameter"@en .
 
-:Request a owl:Class ;
-    rdfs:label "Request"@en ;
-    rdfs:comment "An HTTP request."@en ;
-    rdfs:subClassOf :Message ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
-
 :RequestHeader a owl:Class ;
     rdfs:subClassOf :MessageHeader ;
     rdfs:label "Request Header"@en ;
     rdfs:comment "A header in an HTTP request message."@en .
-
-:Response a owl:Class ;
-    rdfs:label "Response"@en ;
-    rdfs:comment "An HTTP response."@en ;
-    rdfs:subClassOf :Message ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
 :ResponseHeader a owl:Class ;
     rdfs:label "Response Header"@en ;
@@ -97,7 +109,7 @@
     rdfs:label "Entity Body"@en ;
     rdfs:comment "The entity body of an HTTP message."@en ;
     rdfs:domain :Message ;
-    rdfs:range <http://www.w3.org/2011/content#ContentAsBase64> ;
+    rdfs:range <http://www.w3.org/2011/content#Content> ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
 :connectionAuthority a owl:DatatypeProperty ;
