@@ -34,7 +34,7 @@
                 ] [
                 rdf:type owl:Restriction ;
                 owl:onProperty :headers ;
-                owl:allValuesFrom :MessageHeader;
+                owl:allValuesFrom :Header;
                 ])] .
 
 :Request a owl:Class ;
@@ -195,13 +195,17 @@ mthd:TRACE a :Method  ;
 ## Headers. ##
 ## -------- ##
 
+:Header a owl:Class ;
+    rdfs:label "Message Header"@en ;
+    rdfs:comment "A header in an HTTP message."@en .
+
 :EntityHeader a owl:Class ;
-    rdfs:subClassOf :MessageHeader ;
+    rdfs:subClassOf :Header ;
     rdfs:label "Entity Header"@en ;
     rdfs:comment "An entity header in an HTTP message."@en .
 
 :GeneralHeader a owl:Class ;
-    rdfs:subClassOf :MessageHeader ;
+    rdfs:subClassOf :Header ;
     rdfs:label "General Header"@en ;
     rdfs:comment "A general header in an HTTP message."@en .
 
@@ -213,23 +217,19 @@ mthd:TRACE a :Method  ;
     rdfs:label "Header Name"@en ;
     rdfs:comment "A header name."@en .
 
-:MessageHeader a owl:Class ;
-    rdfs:label "Message Header"@en ;
-    rdfs:comment "A header in an HTTP message."@en .
-
 :Parameter a owl:Class ;
     rdfs:comment "A parameter for a part of a header value."@en ;
     rdfs:label "Parameter"@en .
 
 :RequestHeader a owl:Class ;
-    rdfs:subClassOf :MessageHeader ;
+    rdfs:subClassOf :Header ;
     rdfs:label "Request Header"@en ;
     rdfs:comment "A header in an HTTP request message."@en .
 
 :ResponseHeader a owl:Class ;
     rdfs:label "Response Header"@en ;
     rdfs:comment "A header in an HTTP response message."@en ;
-    rdfs:subClassOf :MessageHeader .
+    rdfs:subClassOf :Header .
 
 :connectionAuthority a owl:DatatypeProperty ;
     rdfs:label "Connection authority"@en ;
@@ -252,24 +252,24 @@ mthd:TRACE a :Method  ;
 :fieldName a owl:DatatypeProperty ;
     rdfs:label "Field name"@en ;
     rdfs:comment "The name of an HTTP header field."@en ;
-    rdfs:domain :MessageHeader ;
+    rdfs:domain :Header ;
     rdfs:range rdfs:Literal .
 
 :fieldValue a owl:DatatypeProperty ;
     rdfs:label "Field value"@en ;
     rdfs:comment "The value of an HTTP header field."@en ;
-    rdfs:domain :MessageHeader ;
+    rdfs:domain :Header ;
     rdfs:range rdfs:Literal .
 
 :headerElements a owl:ObjectProperty ;
     rdfs:label "Header elements"@en ;
     rdfs:comment "The deconstructed parts of an HTTP header value."@en ;
-    rdfs:domain :MessageHeader .
+    rdfs:domain :Header .
 
 :hdrName a owl:ObjectProperty ;
     rdfs:label "Header name"@en ;
     rdfs:comment "The name of an HTTP header."@en ;
-    rdfs:domain :MessageHeader ;
+    rdfs:domain :Header ;
     rdfs:range :HeaderName .
 
 :headers a owl:ObjectProperty ;
