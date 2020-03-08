@@ -2,6 +2,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix mthd: <http://www.w3.org/2011/http-methods> .
 @prefix sc: <http://www.w3.org/2011/http-statusCodes#> .
+@prefix hds: <http://www.w3.org/2011/http-headers#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -197,76 +198,64 @@ mthd:TRACE a :Method  ;
 
 :Header a owl:Class ;
     rdfs:label "Message Header"@en ;
-    rdfs:comment "A header in an HTTP message."@en .
+    rdfs:comment "A header in an HTTP message."@en ;
+    rdfs:subClassOf [
+        rdf:type owl:Restriction ;
+        owl:onProperty :fieldName ;
+        owl:cardinality 1
+        ] , [
+        rdf:type owl:Restriction ;
+        owl:onProperty :fieldValue ;
+        owl:cardinality 1
+        ] .
 
-:EntityHeader a owl:Class ;
-    rdfs:subClassOf :Header ;
-    rdfs:label "Entity Header"@en ;
-    rdfs:comment "An entity header in an HTTP message."@en .
-
-:GeneralHeader a owl:Class ;
-    rdfs:subClassOf :Header ;
-    rdfs:label "General Header"@en ;
-    rdfs:comment "A general header in an HTTP message."@en .
-
-:HeaderElement a owl:Class ;
-    rdfs:label "Header Element"@en ;
-    rdfs:comment "A part of a deconstructed header value."@en .
-
-:HeaderName a owl:Class ;
-    rdfs:label "Header Name"@en ;
-    rdfs:comment "A header name."@en .
-
-:RequestHeader a owl:Class ;
-    rdfs:subClassOf :Header ;
-    rdfs:label "Request Header"@en ;
-    rdfs:comment "A header in an HTTP request message."@en .
-
-:ResponseHeader a owl:Class ;
-    rdfs:label "Response Header"@en ;
-    rdfs:comment "A header in an HTTP response message."@en ;
-    rdfs:subClassOf :Header .
-
-:elementName a owl:DatatypeProperty ;
-    rdfs:label "Header element name"@en ;
-    rdfs:comment "The name of a header element."@en ;
-    rdfs:domain :HeaderElement ;
-    rdfs:range rdfs:Literal .
-
-:elementValue a owl:DatatypeProperty ;
-    rdfs:label "Header element value"@en ;
-    rdfs:comment "The value of a header element."@en ;
-    rdfs:domain :HeaderElement ;
-    rdfs:range rdfs:Literal .
-
-:fieldName a owl:DatatypeProperty ;
+:fieldName a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Field name"@en ;
     rdfs:comment "The name of an HTTP header field."@en ;
     rdfs:domain :Header ;
     rdfs:range rdfs:Literal .
 
-:fieldValue a owl:DatatypeProperty ;
+:fieldValue a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Field value"@en ;
     rdfs:comment "The value of an HTTP header field."@en ;
     rdfs:domain :Header ;
     rdfs:range rdfs:Literal .
 
-:headerElements a owl:ObjectProperty ;
-    rdfs:label "Header elements"@en ;
-    rdfs:comment "The deconstructed parts of an HTTP header value."@en ;
-    rdfs:domain :Header .
-
-:hdrName a owl:ObjectProperty ;
-    rdfs:label "Header name"@en ;
-    rdfs:comment "The name of an HTTP header."@en ;
-    rdfs:domain :Header ;
-    rdfs:range :HeaderName .
-
 :headers a owl:ObjectProperty ;
     rdfs:label "Headers"@en ;
     rdfs:comment "The headers in an HTTP message."@en ;
     rdfs:domain :Message ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+    rdfs:range :Header .
+
+### Location Header property
+
+hds:hasLocationHeader a owl:ObjectProperty ;
+    rdfs:domain hds:Header ;
+    rdfs:range hds:Header .
+
+:objectValue a owl:ObjectProperty, owl:FunctionalProperty .
+
+hds:LocationHeader a owl:Class ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty hds:hasLocationHeader ;
+        owl:hasSelf true
+        ] , [
+        a owl:Restriction ;
+        owl:onProperty :objectValue ;
+        owl:someValuesFrom owl:Thing ;
+        owl:cardinality 1
+        ] ;
+    owl:equivalentClass [
+        owl:intersectionOf (:Header [
+                rdf:type owl:Restriction ;
+                owl:onProperty :fieldName ;
+                owl:hasValue "Location" ;
+                owl:cardinality 1
+                ])] .
+
+hds:Location a owl:ObjectProperty ;
+   owl:propertyChainAxiom (:headers hds:hasLocationHeader :objectValue) .
 
 ## ----------------- ##
 ## Query parameters. ##
