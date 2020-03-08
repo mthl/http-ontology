@@ -3,6 +3,7 @@
 @prefix mthd: <http://www.w3.org/2011/http-methods> .
 @prefix sc: <http://www.w3.org/2011/http-statusCodes#> .
 @prefix hds: <http://www.w3.org/2011/http-headers#> .
+@prefix cnt: <http://www.w3.org/2011/content#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -287,12 +288,22 @@ hds:Location a owl:ObjectProperty ;
 ## Content. ##
 ## -------- ##
 
+cnt:about a owl:ObjectProperty ;
+    rdfs:domain cnt:ContentAsRDF ;
+    rdfs:range owl:Thing .
+
+cnt:ContentAsRDF a owl:Class ;
+    rdfs:subClassOf cnt:Content ;
+    owl:equivalentClass [
+        rdf:type owl:Restriction ;
+        owl:onProperty cnt:about ;
+        owl:cardinality 1 ] .
+
 :body a owl:ObjectProperty ;
     rdfs:label "Entity Body"@en ;
     rdfs:comment "The entity body of an HTTP message."@en ;
     rdfs:domain :Message ;
-    rdfs:range <http://www.w3.org/2011/content#Content> ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+    rdfs:range cnt:Content .
 
 ## ------------ ##
 ## Status codes ##
