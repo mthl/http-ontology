@@ -29,12 +29,12 @@
     owl:members (:Request :Response) ;
     rdfs:subClassOf [
         owl:intersectionOf ([
-                rdf:type owl:Restriction ;
+                a owl:Restriction ;
                 owl:onProperty :body ;
                 owl:cardinality 1 ;
                 owl:allValuesFrom <http://www.w3.org/2011/content#Content> ;
                 ] [
-                rdf:type owl:Restriction ;
+                a owl:Restriction ;
                 owl:onProperty :headers ;
                 owl:allValuesFrom :Header;
                 ])] .
@@ -44,12 +44,12 @@
     rdfs:comment "An HTTP request."@en ;
     rdfs:subClassOf [
         owl:intersectionOf (:Message [
-                rdf:type owl:Restriction ;
+                a owl:Restriction ;
                 owl:onProperty :mthd ;
                 owl:cardinality 1 ;
                 owl:someValuesFrom :Method ;
                 ] [
-                rdf:type owl:Restriction ;
+                a owl:Restriction ;
                 owl:onProperty :target ;
                 owl:cardinality 1 ;
                 ])] ;
@@ -61,7 +61,7 @@
     owl:members (:InterimResponse :FinalResponse) ;
     rdfs:subClassOf [
         owl:intersectionOf (:Message [
-                rdf:type owl:Restriction ;
+                a owl:Restriction ;
                 owl:onProperty :sc ;
                 owl:cardinality 1 ;
                 owl:someValuesFrom :StatusCode ;
@@ -70,7 +70,7 @@
 :InterimResponse a owl:Class ;
     rdfs:label "Interim"@en ;
     rdfs:subClassOf :Response, [
-        rdf:type owl:Restriction ;
+        a owl:Restriction ;
         owl:onProperty :sc ;
         owl:cardinality 1 ;
         owl:someValuesFrom sc:Informational ;
@@ -96,7 +96,7 @@
     rdfs:label "Method"@en ;
     rdfs:comment "The HTTP method used for the request."@en ;
     owl:equivalentClass [
-        rdf:type owl:Restriction ;
+        a owl:Restriction ;
         owl:onProperty :methodName ;
         owl:someValuesFrom :notEmptyToken ;
         owl:cardinality 1 ] .
@@ -201,11 +201,11 @@ mthd:TRACE a :Method  ;
     rdfs:label "Message Header"@en ;
     rdfs:comment "A header in an HTTP message."@en ;
     rdfs:subClassOf [
-        rdf:type owl:Restriction ;
+        a owl:Restriction ;
         owl:onProperty :fieldName ;
         owl:cardinality 1
         ] , [
-        rdf:type owl:Restriction ;
+        a owl:Restriction ;
         owl:onProperty :fieldValue ;
         owl:cardinality 1
         ] .
@@ -249,7 +249,7 @@ hds:LocationHeader a owl:Class ;
         ] ;
     owl:equivalentClass [
         owl:intersectionOf (:Header [
-                rdf:type owl:Restriction ;
+                a owl:Restriction ;
                 owl:onProperty :fieldName ;
                 owl:hasValue "Location" ;
                 owl:cardinality 1
@@ -295,7 +295,7 @@ cnt:about a owl:ObjectProperty ;
 cnt:ContentAsRDF a owl:Class ;
     rdfs:subClassOf cnt:Content ;
     owl:equivalentClass [
-        rdf:type owl:Restriction ;
+        a owl:Restriction ;
         owl:onProperty cnt:about ;
         owl:cardinality 1 ] .
 
@@ -312,7 +312,7 @@ cnt:ContentAsRDF a owl:Class ;
 :StatusCode a owl:Class ;
     rdfs:label "Status code"@en ;
     owl:equivalentClass [
-        rdf:type owl:Restriction ;
+        a owl:Restriction ;
         owl:onProperty :statusCodeNumber ;
         owl:cardinality 1 ;
         owl:someValuesFrom :threeDigit ;
@@ -345,10 +345,10 @@ cnt:ContentAsRDF a owl:Class ;
 
 sc:Informational a owl:Class ;
     owl:equivalentClass [ owl:intersectionOf (:StatusCode [
-                rdf:type owl:Restriction ;
+                a owl:Restriction ;
                 owl:onProperty :statusCodeNumber ;
                 owl:someValuesFrom [
-                    rdf:type rdfs:Datatype ;
+                    a rdfs:Datatype ;
                     owl:onDatatype xsd:integer ;
                     owl:withRestrictions ([ xsd:minInclusive 100] [ xsd:maxInclusive 199])]])
         ] ;
@@ -357,10 +357,10 @@ sc:Informational a owl:Class ;
 
 sc:Successful a owl:Class ;
     owl:equivalentClass [ owl:intersectionOf (:StatusCode [
-                rdf:type owl:Restriction ;
+                a owl:Restriction ;
                 owl:onProperty :statusCodeNumber ;
                 owl:someValuesFrom [
-                    rdf:type rdfs:Datatype ;
+                    a rdfs:Datatype ;
                     owl:onDatatype xsd:integer ;
                     owl:withRestrictions ([ xsd:minInclusive 200] [ xsd:maxInclusive 299])]])
         ] ;
@@ -369,10 +369,10 @@ sc:Successful a owl:Class ;
 
 sc:Redirection a owl:Class ;
     owl:equivalentClass [ owl:intersectionOf (:StatusCode [
-                rdf:type owl:Restriction ;
+                a owl:Restriction ;
                 owl:onProperty :statusCodeNumber ;
                 owl:someValuesFrom [
-                    rdf:type rdfs:Datatype ;
+                    a rdfs:Datatype ;
                     owl:onDatatype xsd:integer ;
                     owl:withRestrictions ([ xsd:minInclusive 300] [ xsd:maxInclusive 399])]])
         ] ;
@@ -381,10 +381,10 @@ sc:Redirection a owl:Class ;
 
 sc:ClientError a owl:Class ;
     owl:equivalentClass [ owl:intersectionOf (:StatusCode [
-                rdf:type owl:Restriction ;
+                a owl:Restriction ;
                 owl:onProperty :statusCodeNumber ;
                 owl:someValuesFrom [
-                    rdf:type rdfs:Datatype ;
+                    a rdfs:Datatype ;
                     owl:onDatatype xsd:integer ;
                     owl:withRestrictions ([ xsd:minInclusive 400] [ xsd:maxInclusive 499])]])
         ] ;
@@ -393,10 +393,10 @@ sc:ClientError a owl:Class ;
 
 sc:ServerError a owl:Class ;
     owl:equivalentClass [ owl:intersectionOf (:StatusCode [
-                rdf:type owl:Restriction ;
+                a owl:Restriction ;
                 owl:onProperty :statusCodeNumber ;
                 owl:someValuesFrom [
-                    rdf:type rdfs:Datatype ;
+                    a rdfs:Datatype ;
                     owl:onDatatype xsd:integer ;
                     owl:withRestrictions ([ xsd:minInclusive 500] [ xsd:maxInclusive 599])]])
         ] ;
