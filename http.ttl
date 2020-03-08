@@ -1,5 +1,6 @@
 @prefix : <http://www.w3.org/2011/http#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix mthd: <http://www.w3.org/2011/http-methods> .
 @prefix sc: <http://www.w3.org/2011/http-statusCodes#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -77,21 +78,67 @@
 :Method a owl:Class ;
     rdfs:label "Method"@en ;
     rdfs:comment "The HTTP method used for the request."@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+    owl:equivalentClass [
+        rdf:type owl:Restriction ;
+        owl:onProperty :methodName ;
+        owl:someValuesFrom :notEmptyToken ;
+        owl:cardinality 1 ] .
 
-:mthd a owl:ObjectProperty ;
+:mthd a owl:ObjectProperty, owl:FunctionalProperty ;
     rdfs:label "Method"@en ;
     rdfs:comment "The HTTP method used for the HTTP request."@en ;
     rdfs:domain :Request ;
-    rdfs:range :Method ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+    rdfs:range :Method .
 
-:methodName a owl:DatatypeProperty ;
+:methodName a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Method name"@en ;
     rdfs:comment "The HTTP method name used for the HTTP request."@en ;
     rdfs:domain :Method ;
-    rdfs:range rdfs:Literal ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+    rdfs:range :notEmptyToken .
+
+:notEmptyToken a rdfs:Datatype ;
+    rdfs:label "Non-empty token"@en ;
+    rdfs:comment "A token with at least one character" ;
+    owl:equivalentClass [
+        a rdfs:Datatype ;
+        owl:onDatatype xsd:token ;
+        owl:withRestrictions ([ xsd:minLength 1])] .
+
+mthd:GET a :Method ;
+    rdfs:label "GET" ;
+    :methodName "GET" .
+
+mthd:HEAD a :Method  ;
+    rdfs:label "HEAD" ;
+    :methodName "HEAD" .
+
+mthd:POST a :Method  ;
+    rdfs:label "POST" ;
+    :methodName "POST" .
+
+mthd:PUT a :Method  ;
+    rdfs:label "PUT" ;
+    :methodName "PUT" .
+
+mthd:DELETE a :Method  ;
+    rdfs:label "DELETE" ;
+    :methodName "DELETE" .
+
+mthd:CONNECT a :Method  ;
+    rdfs:label "CONNECT" ;
+    :methodName "CONNECT" .
+
+mthd:PATCH a :Method  ;
+    rdfs:label "PATCH" ;
+    :methodName "PATCH" .
+
+mthd:OPTIONS a :Method  ;
+    rdfs:label "OPTIONS" ;
+    :methodName "OPTIONS" .
+
+mthd:TRACE a :Method  ;
+    rdfs:label "TRACE" ;
+    :methodName "TRACE" .
 
 ## ---- ##
 ## URI. ##
