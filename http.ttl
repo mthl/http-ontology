@@ -161,37 +161,37 @@ mthd:TRACE a :Method  ;
 ## URI. ##
 ## ---- ##
 
-:target a owl:DatatypeProperty ;
+:target a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Request URI"@en ;
     rdfs:comment "The literal target URI present in the request line."@en ;
     rdfs:domain :Request ;
     rdfs:range xsd:anyURI ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
-:uri a owl:ObjectProperty ;
-    rdfs:label "Request effective URI" ;
+:uri a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:label "Effective request URI" ;
     rdfs:domain :Request ;
     rdfs:range owl:Thing .
 
-:scheme a owl:DatatypeProperty ;
+:scheme a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Scheme"@en ;
     rdfs:comment "The scheme part of an URI."@en .
 
-:authority a owl:DatatypeProperty ;
+:authority a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Authority"@en ;
     rdfs:comment "The authority part of an URI."@en .
 
-:path a owl:DatatypeProperty ;
-    rdfs:label "Scheme"@en ;
+:path a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "Path"@en ;
     rdfs:comment "The path part of an URI."@en .
 
-:query a owl:DatatypeProperty ;
-    rdfs:label "Scheme"@en ;
+:query a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "Query"@en ;
     rdfs:comment "The query part of an URI."@en .
 
-:fragment a owl:DatatypeProperty ;
-    rdfs:label "Scheme"@en ;
-    rdfs:comment "The fragmen part of an URI."@en .
+:fragment a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "Fragment"@en ;
+    rdfs:comment "The fragment part of an URI."@en .
 
 ## -------- ##
 ## Headers. ##
