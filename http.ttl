@@ -298,8 +298,8 @@ sc:Informational a owl:Class ;
                     owl:onDatatype xsd:integer ;
                     owl:withRestrictions ([ xsd:minInclusive 100] [ xsd:maxInclusive 199])]])
         ] ;
-    rdfs:label "Status code denoting an informational response"@en ;
-    rdfs:comment "A status code starting with 1"@en .
+    rdfs:label "Informational"@en ;
+    rdfs:comment "A status code starting with 1, denoting Status an informational response"@en .
 
 sc:Successful a owl:Class ;
     owl:equivalentClass [ owl:intersectionOf (:StatusCode [
@@ -310,8 +310,8 @@ sc:Successful a owl:Class ;
                     owl:onDatatype xsd:integer ;
                     owl:withRestrictions ([ xsd:minInclusive 200] [ xsd:maxInclusive 299])]])
         ] ;
-    rdfs:label "Status code denoting a successful interaction"@en ;
-    rdfs:comment "A status code starting with 2"@en .
+    rdfs:label "Successful"@en ;
+    rdfs:comment "A status code starting with 2, denoting a successful interaction"@en .
 
 sc:Redirection a owl:Class ;
     owl:equivalentClass [ owl:intersectionOf (:StatusCode [
