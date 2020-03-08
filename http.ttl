@@ -261,26 +261,27 @@ hds:Location a owl:ObjectProperty ;
 ## Query parameters. ##
 ## ----------------- ##
 
-:Parameter a owl:Class ;
+:QueryParam a owl:Class ;
     rdfs:comment "A parameter for a part of a header value."@en ;
-    rdfs:label "Parameter"@en .
+    rdfs:label "Query Parameter"@en .
 
-:paramName a owl:DatatypeProperty ;
+:paramName a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Parameter name"@en ;
-    rdfs:comment "The name of a parameter in a part of a deconstructed HTTP header value."@en ;
-    rdfs:domain :Parameter ;
+    rdfs:comment "The name of a query parameter."@en ;
+    rdfs:domain :QueryParam ;
     rdfs:range rdfs:Literal .
 
-:params a owl:ObjectProperty ;
-    rdfs:label "Header parameters"@en ;
-    rdfs:comment "The parameters in a part of a deconstructed HTTP header value."@en ;
-    rdfs:domain :HeaderElement .
-
-:paramValue a owl:DatatypeProperty ;
+:paramValue a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Parameter value"@en ;
-    rdfs:comment "The value of a parameter in a part of a deconstructed HTTP header value."@en ;
-    rdfs:domain :Parameter ;
+    rdfs:comment "The literal value of a query parameter."@en ;
+    rdfs:domain :QueryParam ;
     rdfs:range rdfs:Literal .
+
+:queryParams a owl:ObjectProperty ;
+    rdfs:label "Query parameters"@en ;
+    rdfs:comment "The parameters found in the query string part of a URL."@en ;
+    rdfs:domain owl:Thing ;
+    rdfs:range :QueryParam .
 
 ## -------- ##
 ## Content. ##
