@@ -217,10 +217,6 @@ mthd:TRACE a :Method  ;
     rdfs:label "Header Name"@en ;
     rdfs:comment "A header name."@en .
 
-:Parameter a owl:Class ;
-    rdfs:comment "A parameter for a part of a header value."@en ;
-    rdfs:label "Parameter"@en .
-
 :RequestHeader a owl:Class ;
     rdfs:subClassOf :Header ;
     rdfs:label "Request Header"@en ;
@@ -230,12 +226,6 @@ mthd:TRACE a :Method  ;
     rdfs:label "Response Header"@en ;
     rdfs:comment "A header in an HTTP response message."@en ;
     rdfs:subClassOf :Header .
-
-:connectionAuthority a owl:DatatypeProperty ;
-    rdfs:label "Connection authority"@en ;
-    rdfs:comment "The authority of a connection used for the HTTP transfer."@en ;
-    rdfs:domain :Connection ;
-    rdfs:range rdfs:Literal .
 
 :elementName a owl:DatatypeProperty ;
     rdfs:label "Header element name"@en ;
@@ -278,6 +268,14 @@ mthd:TRACE a :Method  ;
     rdfs:domain :Message ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
+## ----------------- ##
+## Query parameters. ##
+## ----------------- ##
+
+:Parameter a owl:Class ;
+    rdfs:comment "A parameter for a part of a header value."@en ;
+    rdfs:label "Parameter"@en .
+
 :paramName a owl:DatatypeProperty ;
     rdfs:label "Parameter name"@en ;
     rdfs:comment "The name of a parameter in a part of a deconstructed HTTP header value."@en ;
@@ -294,13 +292,6 @@ mthd:TRACE a :Method  ;
     rdfs:comment "The value of a parameter in a part of a deconstructed HTTP header value."@en ;
     rdfs:domain :Parameter ;
     rdfs:range rdfs:Literal .
-
-:reasonPhrase a owl:DatatypeProperty ;
-    rdfs:label "Reason phrase"@en ;
-    rdfs:comment "The reason phrase (status text) of an HTTP response."@en ;
-    rdfs:domain :Response ;
-    rdfs:range rdfs:Literal ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
 ## -------- ##
 ## Content. ##
@@ -677,6 +668,12 @@ sc:VariantAlsoNegotiates a :StatusCode ;
     rdfs:comment "A connection used for HTTP transfer."@en ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
+:connectionAuthority a owl:DatatypeProperty ;
+    rdfs:label "Connection authority"@en ;
+    rdfs:comment "The authority of a connection used for the HTTP transfer."@en ;
+    rdfs:domain :Connection ;
+    rdfs:range rdfs:Literal .
+
 :requests a owl:ObjectProperty ;
     rdfs:label "Requests"@en ;
     rdfs:comment "The HTTP requests made via a connection."@en ;
@@ -687,5 +684,12 @@ sc:VariantAlsoNegotiates a :StatusCode ;
     rdfs:label "HTTP version"@en ;
     rdfs:comment "The HTTP version of an HTTP message."@en ;
     rdfs:domain :Message ;
+    rdfs:range rdfs:Literal ;
+    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+
+:reasonPhrase a owl:DatatypeProperty ;
+    rdfs:label "Reason phrase"@en ;
+    rdfs:comment "The reason phrase (status text) of an HTTP response."@en ;
+    rdfs:domain :Response ;
     rdfs:range rdfs:Literal ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
