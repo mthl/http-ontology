@@ -163,7 +163,7 @@ mthd:TRACE a :Method  ;
     rdfs:label "Request URI"@en ;
     rdfs:comment "The literal target URI present in the request line."@en ;
     rdfs:domain :Request ;
-    rdfs:range rdfs:Literal ;
+    rdfs:range xsd:anyURI ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
 :uri a owl:ObjectProperty ;
