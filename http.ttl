@@ -53,17 +53,32 @@
                 ])] ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
 
-:Response a owl:Class ;
+:Response a owl:AllDisjointClasses ;
     rdfs:label "Response"@en ;
     rdfs:comment "An HTTP response."@en ;
+    owl:members (:InterimResponse :FinalResponse) ;
     rdfs:subClassOf [
         owl:intersectionOf (:Message [
                 rdf:type owl:Restriction ;
                 owl:onProperty :sc ;
                 owl:cardinality 1 ;
                 owl:someValuesFrom :StatusCode ;
-                ])] ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+                ])] .
+
+:InterimResponse a owl:Class ;
+    rdfs:label "Interim"@en ;
+    rdfs:subClassOf :Response, [
+        rdf:type owl:Restriction ;
+        owl:onProperty :sc ;
+        owl:cardinality 1 ;
+        owl:someValuesFrom sc:Informational ;
+        ] ;
+    rdfs:comment "An interim response."@en .
+
+:FinalResponse a owl:Class ;
+    rdfs:label "Final"@en ;
+    rdfs:subClassOf :Response, [ owl:complementOf :InterimResponse ] ;
+    rdfs:comment "A final response."@en .
 
 :resp a owl:ObjectProperty ;
     rdfs:label "Response"@en ;
