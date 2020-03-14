@@ -234,7 +234,7 @@ hds:hasLocationHeader a owl:ObjectProperty ;
     rdfs:domain hds:Header ;
     rdfs:range hds:Header .
 
-:objectValue a owl:ObjectProperty, owl:FunctionalProperty .
+:link a owl:ObjectProperty, owl:FunctionalProperty .
 
 hds:LocationHeader a owl:Class ;
     rdfs:subClassOf [
@@ -243,7 +243,7 @@ hds:LocationHeader a owl:Class ;
         owl:hasSelf true
         ] , [
         a owl:Restriction ;
-        owl:onProperty :objectValue ;
+        owl:onProperty :link ;
         owl:someValuesFrom owl:Thing ;
         owl:cardinality 1
         ] ;
@@ -256,7 +256,7 @@ hds:LocationHeader a owl:Class ;
                 ])] .
 
 hds:Location a owl:ObjectProperty ;
-   owl:propertyChainAxiom (:headers hds:hasLocationHeader :objectValue) .
+   owl:propertyChainAxiom (:headers hds:hasLocationHeader :link) .
 
 ## ----------------- ##
 ## Query parameters. ##
