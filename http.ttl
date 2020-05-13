@@ -13,7 +13,7 @@
 
 <http://www.w3.org/2011/http> a owl:Ontology ;
     rdfs:label "HTTP in RDF"@en ;
-    rdfs:comment "A namespace for describing HTTP messages (http://www.w3.org/Protocols/rfc2616/rfc2616.html)"@en ;
+    rdfs:comment "A namespace for describing HTTP messages"@en ;
     owl:versionInfo "Working Draft 29 April 2011"@en ;
     rdfs:isDefinedBy <http://www.w3.org/TR/HTTP-in-RDF/> ;
     rdfs:seeAlso <http://www.w3.org/WAI/intro/earl>,
@@ -26,7 +26,7 @@
 :Message a owl:AllDisjointClasses ;
     rdfs:label "Message"@en ;
     rdfs:comment "An HTTP message."@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     owl:members (:Request :Response) ;
     rdfs:subClassOf [
         owl:intersectionOf ([
@@ -55,7 +55,7 @@
                 owl:someValuesFrom :URI;
                 owl:cardinality 1 ;
                 ])] ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> .
 
 :Response a owl:AllDisjointClasses ;
     rdfs:label "Response"@en ;
@@ -125,39 +125,48 @@
 
 mthd:GET a :Method ;
     rdfs:label "GET" ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.1> ;
     :methodName "GET" .
 
 mthd:HEAD a :Method  ;
     rdfs:label "HEAD" ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.2> ;
     :methodName "HEAD" .
 
 mthd:POST a :Method  ;
     rdfs:label "POST" ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.3> ;
     :methodName "POST" .
 
 mthd:PUT a :Method  ;
     rdfs:label "PUT" ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.4> ;
     :methodName "PUT" .
 
 mthd:DELETE a :Method  ;
     rdfs:label "DELETE" ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.5> ;
     :methodName "DELETE" .
 
 mthd:CONNECT a :Method  ;
     rdfs:label "CONNECT" ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.6> ;
     :methodName "CONNECT" .
-
-mthd:PATCH a :Method  ;
-    rdfs:label "PATCH" ;
-    :methodName "PATCH" .
 
 mthd:OPTIONS a :Method  ;
     rdfs:label "OPTIONS" ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.7> ;
     :methodName "OPTIONS" .
 
 mthd:TRACE a :Method  ;
     rdfs:label "TRACE" ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.8> ;
     :methodName "TRACE" .
+
+mthd:PATCH a :Method  ;
+    rdfs:label "PATCH" ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc5789> ;
+    :methodName "PATCH" .
 
 ## ---- ##
 ## URI. ##
@@ -317,14 +326,14 @@ cnt:ContentAsRDF a owl:Class ;
         owl:cardinality 1 ;
         owl:someValuesFrom :threeDigit ;
         ] ;
-    rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-6> ;
     rdfs:comment "The status code of an HTTP response."@en .
 
 :sc a owl:ObjectProperty, owl:FunctionalProperty ;
     rdfs:label "Status code"@en ;
     rdfs:domain :Response ;
     rdfs:range :StatusCode ;
-    rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-6> ;
     rdfs:comment "The status code of an HTTP response."@en .
 
 :threeDigit a rdfs:Datatype ;
@@ -340,7 +349,7 @@ cnt:ContentAsRDF a owl:Class ;
     rdfs:label "Status code number"@en ;
     rdfs:domain :StatusCode ;
     rdfs:range :threeDigit ;
-    rdfs:isDefinedBy <https://tools.ietf.org/html/rfc7231#section-6> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-6> ;
     rdfs:comment "The status code number."@en .
 
 sc:Informational a owl:Class ;
@@ -407,37 +416,37 @@ sc:ServerError a owl:Class ;
 
 sc:Accepted a :StatusCode ;
     dcterms:title "Accepted"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 202 .
 
 sc:BadGateway a :StatusCode ;
     dcterms:title "Bad Gateway"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 502 .
 
 sc:BadRequest a :StatusCode ;
     dcterms:title "Bad Request"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 400 .
 
 sc:Conflict a :StatusCode ;
     dcterms:title "Conflict"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 409 .
 
 sc:Continue a :StatusCode ;
     dcterms:title "Continue"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 100 .
 
 sc:Created a :StatusCode ;
     dcterms:title "Created"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 201 .
 
 sc:ExpectationFailed a :StatusCode ;
     dcterms:title "Expectation Failed"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 417 .
 
 sc:FailedDependency a :StatusCode ;
@@ -447,27 +456,27 @@ sc:FailedDependency a :StatusCode ;
 
 sc:Forbidden a :StatusCode ;
     dcterms:title "Forbidden"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 403 .
 
 sc:Found a :StatusCode ;
     dcterms:title "Found"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 302 .
 
 sc:GatewayTimeout a :StatusCode ;
     dcterms:title "Gateway Timeout"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 504 .
 
 sc:Gone a :StatusCode ;
     dcterms:title "Gone"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 410 .
 
 sc:HTTPVersionNotSupported a :StatusCode ;
     dcterms:title "HTTP Version Not Supported"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 505 .
 
 sc:IMUsed a :StatusCode ;
@@ -482,12 +491,12 @@ sc:InsufficientStorage a :StatusCode ;
 
 sc:InternalServerError a :StatusCode ;
     dcterms:title "Internal Server Error"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 500 .
 
 sc:LengthRequired a :StatusCode ;
     dcterms:title "Length Required"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 411 .
 
 sc:Locked a :StatusCode ;
@@ -497,12 +506,12 @@ sc:Locked a :StatusCode ;
 
 sc:MethodNotAllowed a :StatusCode ;
     dcterms:title "Method Not Allowed"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 405 .
 
 sc:MovedPermanently a :StatusCode ;
     dcterms:title "Moved Permanently"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 301 .
 
 sc:MultiStatus a :StatusCode ;
@@ -512,22 +521,22 @@ sc:MultiStatus a :StatusCode ;
 
 sc:MultipleChoices a :StatusCode ;
     dcterms:title "Multiple Choices"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 300 .
 
 sc:NoContent a :StatusCode ;
     dcterms:title "No Content"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 204 .
 
 sc:NonAuthoritativeInformation a :StatusCode ;
     dcterms:title "Non-Authoritative Information"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 203 .
 
 sc:NotAcceptable a :StatusCode ;
     dcterms:title "Not Acceptable"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 406 .
 
 sc:NotExtended a :StatusCode ;
@@ -537,37 +546,37 @@ sc:NotExtended a :StatusCode ;
 
 sc:NotFound a :StatusCode ;
     dcterms:title "Not Found"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 404 .
 
 sc:NotImplemented a :StatusCode ;
     dcterms:title "Not Implemented"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 501 .
 
 sc:NotModified a :StatusCode ;
     dcterms:title "Not Modified"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 304 .
 
 sc:OK a :StatusCode ;
     dcterms:title "OK"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 200 .
 
 sc:PartialContent a :StatusCode ;
     dcterms:title "Partial Content"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 206 .
 
 sc:PaymentRequired a :StatusCode ;
     dcterms:title "Payment Required"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 402 .
 
 sc:PreconditionFailed a :StatusCode ;
     dcterms:title "Precondition Failed"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 412 .
 
 sc:Processing a :StatusCode ;
@@ -577,62 +586,62 @@ sc:Processing a :StatusCode ;
 
 sc:ProxyAuthenticationRequired a :StatusCode ;
     dcterms:title "Proxy Authentication Required"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 407 .
 
 sc:RequestEntityTooLarge a :StatusCode ;
     dcterms:title "Request Entity Too Large"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 413 .
 
 sc:RequestTimeout a :StatusCode ;
     dcterms:title "Request Timeout"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 408 .
 
 sc:RequestURITooLong a :StatusCode ;
     dcterms:title "Request-URI Too Long"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 414 .
 
 sc:RequestedRangeNotSatisfiable a :StatusCode ;
     dcterms:title "Requested Range Not Satisfiable"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 416 .
 
 sc:Reserved a :StatusCode ;
     dcterms:title "(Reserved)"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 306 .
 
 sc:ResetContent a :StatusCode ;
     dcterms:title "Reset Content"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 205 .
 
 sc:SeeOther a :StatusCode ;
     dcterms:title "See Other"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 303 .
 
 sc:ServiceUnavailable a :StatusCode ;
     dcterms:title "Service Unavailable"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 503 .
 
 sc:SwitchingProtocols a :StatusCode ;
     dcterms:title "Switching Protocols"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 101 .
 
 sc:TemporaryRedirect a :StatusCode ;
     dcterms:title "Temporary Redirect"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 307 .
 
 sc:Unauthorized a :StatusCode ;
     dcterms:title "Unauthorized"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 401 .
 
 sc:UnprocessableEntity a :StatusCode ;
@@ -642,7 +651,7 @@ sc:UnprocessableEntity a :StatusCode ;
 
 sc:UnsupportedMediaType a :StatusCode ;
     dcterms:title "Unsupported Media Type"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 415 .
 
 sc:UpgradeRequired a :StatusCode ;
@@ -652,7 +661,7 @@ sc:UpgradeRequired a :StatusCode ;
 
 sc:UseProxy a :StatusCode ;
     dcterms:title "Use Proxy"@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> ;
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
     :statusCodeNumber 305 .
 
 sc:VariantAlsoNegotiates a :StatusCode ;
@@ -667,7 +676,7 @@ sc:VariantAlsoNegotiates a :StatusCode ;
 :Connection a owl:Class ;
     rdfs:label "Connection"@en ;
     rdfs:comment "A connection used for HTTP transfer."@en ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> .
 
 :connectionAuthority a owl:DatatypeProperty ;
     rdfs:label "Connection authority"@en ;
@@ -679,11 +688,11 @@ sc:VariantAlsoNegotiates a :StatusCode ;
     rdfs:label "Requests"@en ;
     rdfs:comment "The HTTP requests made via a connection."@en ;
     rdfs:domain :Connection ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> .
 
 :httpVersion a owl:DatatypeProperty ;
     rdfs:label "HTTP version"@en ;
     rdfs:comment "The HTTP version of an HTTP message."@en ;
     rdfs:domain :Message ;
     rdfs:range rdfs:Literal ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
+    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> .
