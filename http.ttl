@@ -8,6 +8,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://www.w3.org/2011/http> a owl:Ontology ;
@@ -290,7 +291,7 @@ hds:Location a owl:ObjectProperty ;
 
 cnt:about a owl:ObjectProperty ;
     rdfs:domain cnt:ContentAsRDF ;
-    rdfs:range owl:Thing .
+    rdfs:range sd:Graph .
 
 cnt:ContentAsRDF a owl:Class ;
     rdfs:subClassOf cnt:Content ;
