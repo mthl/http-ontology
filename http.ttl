@@ -687,10 +687,3 @@ sc:VariantAlsoNegotiates a :StatusCode ;
     rdfs:domain :Message ;
     rdfs:range rdfs:Literal ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
-
-:reasonPhrase a owl:DatatypeProperty ;
-    rdfs:label "Reason phrase"@en ;
-    rdfs:comment "The reason phrase (status text) of an HTTP response."@en ;
-    rdfs:domain :Response ;
-    rdfs:range rdfs:Literal ;
-    rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
