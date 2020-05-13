@@ -209,7 +209,7 @@ mthd:TRACE a :Method  ;
     rdfs:comment "A header in an HTTP message."@en ;
     rdfs:subClassOf [
         a owl:Restriction ;
-        owl:onProperty :fieldName ;
+        owl:onProperty :hdrName ;
         owl:cardinality 1
         ] , [
         a owl:Restriction ;
@@ -217,7 +217,7 @@ mthd:TRACE a :Method  ;
         owl:cardinality 1
         ] .
 
-:fieldName a owl:DatatypeProperty, owl:FunctionalProperty ;
+:hdrName a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Field name"@en ;
     rdfs:comment "The name of an HTTP header field."@en ;
     rdfs:domain :Header ;
@@ -257,7 +257,7 @@ hds:LocationHeader a owl:Class ;
     owl:equivalentClass [
         owl:intersectionOf (:Header [
                 a owl:Restriction ;
-                owl:onProperty :fieldName ;
+                owl:onProperty :hdrName ;
                 owl:hasValue "Location" ;
                 owl:cardinality 1
                 ])] .
