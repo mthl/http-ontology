@@ -51,7 +51,8 @@
                 owl:someValuesFrom :Method ;
                 ] [
                 a owl:Restriction ;
-                owl:onProperty :target ;
+                owl:onProperty :uri ;
+                owl:someValuesFrom :URI;
                 owl:cardinality 1 ;
                 ])] ;
     rdfs:isDefinedBy <http://www.ietf.org/rfc/rfc2616.txt> .
@@ -174,6 +175,11 @@ mthd:TRACE a :Method  ;
     rdfs:domain :Request ;
     rdfs:range owl:Thing .
 
+:URI a owl:Class ;
+    rdfs:label "URI description" ;
+    rdfs:comment
+    "A semantic description of the syntactic parts composing a URI."@en .
+
 :scheme a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Scheme"@en ;
     rdfs:comment "The scheme part of an URI."@en .
@@ -245,7 +251,7 @@ hds:LocationHeader a owl:Class ;
         ] , [
         a owl:Restriction ;
         owl:onProperty :link ;
-        owl:someValuesFrom owl:Thing ;
+        owl:someValuesFrom :URI ;
         owl:cardinality 1
         ] ;
     owl:equivalentClass [
@@ -282,7 +288,7 @@ hds:Location a owl:ObjectProperty ;
 :queryParams a owl:ObjectProperty ;
     rdfs:label "Query parameters"@en ;
     rdfs:comment "The parameters found in the query string part of a URL."@en ;
-    rdfs:domain owl:Thing ;
+    rdfs:domain :URI ;
     rdfs:range :QueryParam .
 
 ## -------- ##
