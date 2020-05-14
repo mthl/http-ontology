@@ -164,7 +164,7 @@ mthd:PATCH a :Method  ;
 :uri a owl:ObjectProperty, owl:FunctionalProperty ;
     rdfs:label "Effective request URI" ;
     rdfs:domain :Request ;
-    rdfs:range owl:Thing .
+    rdfs:range :URI .
 
 :URI a owl:Class ;
     rdfs:label "URI description" ;
