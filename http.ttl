@@ -18,7 +18,7 @@
 ## Messages. ##
 ## --------- ##
 
-:Message a owl:AllDisjointClasses ;
+:Message a owl:Class, owl:AllDisjointClasses ;
     rdfs:label "Message"@en ;
     rdfs:comment "An HTTP message."@en ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
@@ -52,7 +52,7 @@
                 ])] ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> .
 
-:Response a owl:AllDisjointClasses ;
+:Response a owl:Class, owl:AllDisjointClasses ;
     rdfs:label "Response"@en ;
     rdfs:comment "An HTTP response."@en ;
     owl:members (:InterimResponse :FinalResponse) ;
