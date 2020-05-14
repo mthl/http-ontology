@@ -1,12 +1,11 @@
 @prefix : <http://www.w3.org/2011/http#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix mthd: <http://www.w3.org/2011/http-methods> .
 @prefix sc: <http://www.w3.org/2011/http-statusCodes#> .
 @prefix hds: <http://www.w3.org/2011/http-headers#> .
 @prefix cnt: <http://www.w3.org/2011/content#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -345,7 +344,7 @@ cnt:ContentAsRDF a owl:Class ;
         owl:withRestrictions ([ xsd:maxInclusive 999])] .
 
 :statusCodeNumber a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:subPropertyOf dc:identifier ;
+    rdfs:subPropertyOf dcterms:identifier ;
     rdfs:label "Status code number"@en ;
     rdfs:domain :StatusCode ;
     rdfs:range :threeDigit ;
