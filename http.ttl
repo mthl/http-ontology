@@ -308,7 +308,7 @@ cnt:ContentAsRDF a owl:Class ;
         owl:onProperty cnt:about ;
         owl:cardinality 1 ] .
 
-:body a owl:ObjectProperty ;
+:body a owl:ObjectProperty, owl:FunctionalProperty ;
     rdfs:label "Entity Body"@en ;
     rdfs:comment "The entity body of an HTTP message."@en ;
     rdfs:domain :Message ;
