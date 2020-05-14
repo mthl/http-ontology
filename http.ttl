@@ -32,7 +32,7 @@
                 a owl:Restriction ;
                 owl:onProperty :body ;
                 owl:cardinality 1 ;
-                owl:allValuesFrom <http://www.w3.org/2011/content#Content> ;
+                owl:allValuesFrom cnt:Content ;
                 ] [
                 a owl:Restriction ;
                 owl:onProperty :headers ;
