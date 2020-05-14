@@ -292,6 +292,11 @@ hds:Location a owl:ObjectProperty ;
 ## Content. ##
 ## -------- ##
 
+cnt:Content a owl:Class ;
+    rdfs:label "Content"@en ;
+    rdfs:comment
+    "Representation of a content which can associated to various formats."@en .
+
 cnt:about a owl:ObjectProperty ;
     rdfs:domain cnt:ContentAsRDF ;
     rdfs:range sd:Graph .
