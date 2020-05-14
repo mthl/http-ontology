@@ -27,7 +27,6 @@
         owl:intersectionOf ([
                 a owl:Restriction ;
                 owl:onProperty :body ;
-                owl:cardinality 1 ;
                 owl:allValuesFrom cnt:Content ;
                 ] [
                 a owl:Restriction ;
@@ -42,13 +41,11 @@
         owl:intersectionOf (:Message [
                 a owl:Restriction ;
                 owl:onProperty :mthd ;
-                owl:cardinality 1 ;
                 owl:someValuesFrom :Method ;
                 ] [
                 a owl:Restriction ;
                 owl:onProperty :uri ;
                 owl:someValuesFrom :URI;
-                owl:cardinality 1 ;
                 ])] ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> .
 
@@ -60,7 +57,6 @@
         owl:intersectionOf (:Message [
                 a owl:Restriction ;
                 owl:onProperty :sc ;
-                owl:cardinality 1 ;
                 owl:someValuesFrom :StatusCode ;
                 ])] .
 
@@ -69,7 +65,6 @@
     rdfs:subClassOf :Response, [
         a owl:Restriction ;
         owl:onProperty :sc ;
-        owl:cardinality 1 ;
         owl:someValuesFrom sc:Informational ;
         ] ;
     rdfs:comment "An interim response."@en .
@@ -95,8 +90,7 @@
     owl:equivalentClass [
         a owl:Restriction ;
         owl:onProperty :methodName ;
-        owl:someValuesFrom :notEmptyToken ;
-        owl:cardinality 1 ] .
+        owl:someValuesFrom :notEmptyToken ] .
 
 :mthd a owl:ObjectProperty, owl:FunctionalProperty ;
     rdfs:label "Method"@en ;
@@ -207,11 +201,11 @@ mthd:PATCH a :Method  ;
     rdfs:subClassOf [
         a owl:Restriction ;
         owl:onProperty :hdrName ;
-        owl:cardinality 1
+        owl:someValuesFrom rdfs:Literal
         ] , [
         a owl:Restriction ;
         owl:onProperty :fieldValue ;
-        owl:cardinality 1
+        owl:someValuesFrom rdfs:Literal
         ] .
 
 :hdrName a owl:DatatypeProperty, owl:FunctionalProperty ;
@@ -249,14 +243,12 @@ hds:LocationHeader a owl:Class ;
         a owl:Restriction ;
         owl:onProperty :link ;
         owl:someValuesFrom :URI ;
-        owl:cardinality 1
         ] ;
     owl:equivalentClass [
         owl:intersectionOf (:Header [
                 a owl:Restriction ;
                 owl:onProperty :hdrName ;
                 owl:hasValue "Location" ;
-                owl:cardinality 1
                 ])] .
 
 hds:Location a owl:ObjectProperty ;
@@ -323,7 +315,6 @@ cnt:ContentAsRDF a owl:Class ;
     owl:equivalentClass [
         a owl:Restriction ;
         owl:onProperty :statusCodeNumber ;
-        owl:cardinality 1 ;
         owl:someValuesFrom :threeDigit ;
         ] ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-6> ;
