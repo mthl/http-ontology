@@ -1,8 +1,9 @@
-@prefix : <http://www.w3.org/2011/http#> .
-@prefix mthd: <http://www.w3.org/2011/http-methods> .
-@prefix sc: <http://www.w3.org/2011/http-statusCodes#> .
-@prefix hds: <http://www.w3.org/2011/http-headers#> .
-@prefix cnt: <http://www.w3.org/2011/content#> .
+@prefix : <http://w3id.org/http#> .
+@prefix mthd: <http://w3id.org/http/mthd#> .
+@prefix sc: <http://w3id.org/http/sc#> .
+@prefix hds: <http://w3id.org/http/headers#> .
+@prefix cnt: <http://w3id.org/http/content#> .
+
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -10,13 +11,9 @@
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.w3.org/2011/http> a owl:Ontology ;
-    rdfs:label "HTTP in RDF"@en ;
-    rdfs:comment "A namespace for describing HTTP messages"@en ;
-    owl:versionInfo "Working Draft 29 April 2011"@en ;
-    rdfs:isDefinedBy <http://www.w3.org/TR/HTTP-in-RDF/> ;
-    rdfs:seeAlso <http://www.w3.org/WAI/intro/earl>,
-        <http://www.w3.org/TR/Content-in-RDF/> .
+<http://w3id.org/http> a owl:Ontology ;
+    rdfs:label "HTTP Ontology"@en ;
+    rdfs:comment "A namespace for describing HTTP interactions"@en .
 
 ## --------- ##
 ## Messages. ##
