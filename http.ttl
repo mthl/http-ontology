@@ -229,8 +229,8 @@ mthd:PATCH a :Method  ;
 ### Location Header property
 
 hds:hasLocationHeader a owl:ObjectProperty ;
-    rdfs:domain hds:Header ;
-    rdfs:range hds:Header .
+    rdfs:domain :Header ;
+    rdfs:range :Header .
 
 :link a owl:ObjectProperty, owl:FunctionalProperty .
 
