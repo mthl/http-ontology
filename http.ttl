@@ -289,6 +289,11 @@ cnt:Content a owl:Class ;
     rdfs:comment
     "Representation of a content which can associated to various formats."@en .
 
+sd:Graph a rdfs:Class ;
+    rdfs:label "Graph"@en ;
+    rdfs:comment
+    "An instance of sd:Graph represents the description of an RDF graph."@en .
+
 cnt:about a owl:ObjectProperty ;
     rdfs:domain cnt:ContentAsRDF ;
     rdfs:range sd:Graph .
