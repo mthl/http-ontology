@@ -295,10 +295,14 @@ sd:Graph a rdfs:Class ;
     "An instance of sd:Graph represents the description of an RDF graph."@en .
 
 cnt:about a owl:ObjectProperty ;
+    rdfs:label "RDF Content Graph"@en ;
+    rdfs:comment "A property associating an RDF content with its RDF graph"@en ;
     rdfs:domain cnt:ContentAsRDF ;
     rdfs:range sd:Graph .
 
 cnt:ContentAsRDF a owl:Class ;
+    rdfs:label "RDF Content"@en ;
+    rdfs:comment "RDF Content embedded in the body of an HTTP message"@en ;
     rdfs:subClassOf cnt:Content ;
     owl:equivalentClass [
         a owl:Restriction ;
