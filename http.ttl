@@ -10,7 +10,7 @@
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://w3id.org/http> a owl:Ontology ;
+: a owl:Ontology ;
     rdfs:label "HTTP Ontology"@en ;
     rdfs:comment "A namespace for describing HTTP interactions"@en .
 
