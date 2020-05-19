@@ -173,22 +173,27 @@ mthd:PATCH a :Method  ;
 
 :scheme a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Scheme"@en ;
+    rdfs:domain :URI ;
     rdfs:comment "The scheme part of an URI."@en .
 
 :authority a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Authority"@en ;
+    rdfs:domain :URI ;
     rdfs:comment "The authority part of an URI."@en .
 
 :path a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Path"@en ;
+    rdfs:domain :URI ;
     rdfs:comment "The path part of an URI."@en .
 
 :query a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Query"@en ;
+    rdfs:domain :URI ;
     rdfs:comment "The query part of an URI."@en .
 
 :fragment a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "Fragment"@en ;
+    rdfs:domain :URI ;
     rdfs:comment "The fragment part of an URI."@en .
 
 ## -------- ##
