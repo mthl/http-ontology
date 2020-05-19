@@ -30,7 +30,7 @@
                 owl:allValuesFrom cnt:Content ;
                 ] [
                 a owl:Restriction ;
-                owl:onProperty :headers ;
+                owl:onProperty :hdr ;
                 owl:allValuesFrom :Header;
                 ])] .
 
@@ -201,7 +201,7 @@ mthd:PATCH a :Method  ;
 ## -------- ##
 
 :Header a owl:Class ;
-    rdfs:label "Message Header"@en ;
+    rdfs:label "Header"@en ;
     rdfs:comment "A header in an HTTP message."@en ;
     rdfs:subClassOf [
         a owl:Restriction ;
@@ -209,31 +209,32 @@ mthd:PATCH a :Method  ;
         owl:someValuesFrom rdfs:Literal
         ] , [
         a owl:Restriction ;
-        owl:onProperty :fieldValue ;
+        owl:onProperty :hdrValue ;
         owl:someValuesFrom rdfs:Literal
         ] .
 
 :hdrName a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:label "Field name"@en ;
-    rdfs:comment "The name of an HTTP header field."@en ;
+    rdfs:label "header name"@en ;
+    rdfs:comment "The name of an HTTP message header."@en ;
     rdfs:domain :Header ;
     rdfs:range rdfs:Literal .
 
-:fieldValue a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:label "Field value"@en ;
-    rdfs:comment "The value of an HTTP header field."@en ;
+:hdrValue a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "header value"@en ;
+    rdfs:comment "The value of an HTTP message header."@en ;
     rdfs:domain :Header ;
     rdfs:range rdfs:Literal .
 
-:headers a owl:ObjectProperty ;
-    rdfs:label "Headers"@en ;
+:hdr a owl:ObjectProperty ;
+    rdfs:label "header"@en ;
     rdfs:comment "The headers in an HTTP message."@en ;
     rdfs:domain :Message ;
     rdfs:range :Header .
 
 ### Location Header property
 
-hds:hasLocationHeader a owl:ObjectProperty ;
+hds:isLocationHeader a owl:ObjectProperty, owl:ReflexiveProperty ;
+    rdfs:label "location header?" ;
     rdfs:domain :Header ;
     rdfs:range :Header .
 
@@ -242,7 +243,7 @@ hds:hasLocationHeader a owl:ObjectProperty ;
 hds:LocationHeader a owl:Class ;
     rdfs:subClassOf [
         a owl:Restriction ;
-        owl:onProperty hds:hasLocationHeader ;
+        owl:onProperty hds:isLocationHeader ;
         owl:hasSelf true
         ] , [
         a owl:Restriction ;
@@ -256,8 +257,11 @@ hds:LocationHeader a owl:Class ;
                 owl:hasValue "Location" ;
                 ])] .
 
-hds:Location a owl:ObjectProperty ;
-   owl:propertyChainAxiom (:headers hds:hasLocationHeader :link) .
+hds:location a owl:ObjectProperty ;
+    rdfs:label "location" ;
+    rdfs:domain :Response ;
+    rdfs:range :URI ;
+    owl:propertyChainAxiom (:hdr hds:isLocationHeader :link) .
 
 ## ----------------- ##
 ## Query parameters. ##
