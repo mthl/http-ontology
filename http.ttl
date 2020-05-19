@@ -75,7 +75,7 @@
     rdfs:comment "A final response."@en .
 
 :resp a owl:ObjectProperty ;
-    rdfs:label "Response"@en ;
+    rdfs:label "response"@en ;
     rdfs:comment "The HTTP response sent in answer to an HTTP request."@en ;
     rdfs:domain :Request ;
     rdfs:range :Response .
@@ -99,7 +99,7 @@
     rdfs:range :Method .
 
 :methodName a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:label "Method name"@en ;
+    rdfs:label "method name"@en ;
     rdfs:comment "The HTTP method name used for the HTTP request."@en ;
     rdfs:domain :Method ;
     rdfs:range :notEmptyToken .
@@ -162,7 +162,8 @@ mthd:PATCH a :Method  ;
 ## ---- ##
 
 :uri a owl:ObjectProperty, owl:FunctionalProperty ;
-    rdfs:label "Effective request URI" ;
+    rdfs:label "uri" ;
+    rdfs:comment "Effective request URI" ;
     rdfs:domain :Request ;
     rdfs:range :URI .
 
@@ -172,27 +173,27 @@ mthd:PATCH a :Method  ;
     "A semantic description of the syntactic parts composing a URI."@en .
 
 :scheme a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:label "Scheme"@en ;
+    rdfs:label "scheme"@en ;
     rdfs:domain :URI ;
     rdfs:comment "The scheme part of an URI."@en .
 
 :authority a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:label "Authority"@en ;
+    rdfs:label "authority"@en ;
     rdfs:domain :URI ;
     rdfs:comment "The authority part of an URI."@en .
 
 :path a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:label "Path"@en ;
+    rdfs:label "path"@en ;
     rdfs:domain :URI ;
     rdfs:comment "The path part of an URI."@en .
 
 :query a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:label "Query"@en ;
+    rdfs:label "query"@en ;
     rdfs:domain :URI ;
     rdfs:comment "The query part of an URI."@en .
 
 :fragment a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:label "Fragment"@en ;
+    rdfs:label "fragment"@en ;
     rdfs:domain :URI ;
     rdfs:comment "The fragment part of an URI."@en .
 
@@ -272,19 +273,19 @@ hds:location a owl:ObjectProperty ;
     rdfs:label "Query Parameter"@en .
 
 :paramName a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:label "Parameter name"@en ;
+    rdfs:label "parameter name"@en ;
     rdfs:comment "The name of a query parameter."@en ;
     rdfs:domain :QueryParam ;
     rdfs:range rdfs:Literal .
 
 :paramValue a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:label "Parameter value"@en ;
+    rdfs:label "parameter value"@en ;
     rdfs:comment "The literal value of a query parameter."@en ;
     rdfs:domain :QueryParam ;
     rdfs:range rdfs:Literal .
 
 :queryParams a owl:ObjectProperty ;
-    rdfs:label "Query parameters"@en ;
+    rdfs:label "query parameters"@en ;
     rdfs:comment "The parameters found in the query string part of a URL."@en ;
     rdfs:domain :URI ;
     rdfs:range :QueryParam .
@@ -304,7 +305,7 @@ sd:Graph a rdfs:Class ;
     "An instance of sd:Graph represents the description of an RDF graph."@en .
 
 cnt:about a owl:ObjectProperty ;
-    rdfs:label "RDF Content Graph"@en ;
+    rdfs:label "graph"@en ;
     rdfs:comment "A property associating an RDF content with its RDF graph"@en ;
     rdfs:domain cnt:ContentAsRDF ;
     rdfs:range sd:Graph .
@@ -319,7 +320,7 @@ cnt:ContentAsRDF a owl:Class ;
         owl:cardinality 1 ] .
 
 :body a owl:ObjectProperty, owl:FunctionalProperty ;
-    rdfs:label "Entity Body"@en ;
+    rdfs:label "body"@en ;
     rdfs:comment "The entity body of an HTTP message."@en ;
     rdfs:domain :Message ;
     rdfs:range cnt:Content .
@@ -339,7 +340,7 @@ cnt:ContentAsRDF a owl:Class ;
     rdfs:comment "The status code of an HTTP response."@en .
 
 :sc a owl:ObjectProperty, owl:FunctionalProperty ;
-    rdfs:label "Status code"@en ;
+    rdfs:label "status code"@en ;
     rdfs:domain :Response ;
     rdfs:range :StatusCode ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-6> ;
@@ -354,7 +355,7 @@ cnt:ContentAsRDF a owl:Class ;
         owl:withRestrictions ([ xsd:maxInclusive 999])] .
 
 :statusCodeNumber a owl:DatatypeProperty, owl:FunctionalProperty ;
-    rdfs:label "Status code number"@en ;
+    rdfs:label "status code number"@en ;
     rdfs:domain :StatusCode ;
     rdfs:range :threeDigit ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-6> ;
@@ -687,19 +688,19 @@ sc:VariantAlsoNegotiates a :StatusCode ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> .
 
 :connectionAuthority a owl:DatatypeProperty ;
-    rdfs:label "Connection authority"@en ;
+    rdfs:label "connection authority"@en ;
     rdfs:comment "The authority of a connection used for the HTTP transfer."@en ;
     rdfs:domain :Connection ;
     rdfs:range rdfs:Literal .
 
 :requests a owl:ObjectProperty ;
-    rdfs:label "Requests"@en ;
+    rdfs:label "requests"@en ;
     rdfs:comment "The HTTP requests made via a connection."@en ;
     rdfs:domain :Connection ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> .
 
 :httpVersion a owl:DatatypeProperty ;
-    rdfs:label "HTTP version"@en ;
+    rdfs:label "http version"@en ;
     rdfs:comment "The HTTP version of an HTTP message."@en ;
     rdfs:domain :Message ;
     rdfs:range rdfs:Literal ;
