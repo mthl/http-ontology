@@ -682,23 +682,6 @@ sc:VariantAlsoNegotiates a :StatusCode ;
 ## Misc. ##
 ## ----- ##
 
-:Connection a owl:Class ;
-    rdfs:label "Connection"@en ;
-    rdfs:comment "A connection used for HTTP transfer."@en ;
-    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> .
-
-:connectionAuthority a owl:DatatypeProperty ;
-    rdfs:label "connection authority"@en ;
-    rdfs:comment "The authority of a connection used for the HTTP transfer."@en ;
-    rdfs:domain :Connection ;
-    rdfs:range rdfs:Literal .
-
-:requests a owl:ObjectProperty ;
-    rdfs:label "requests"@en ;
-    rdfs:comment "The HTTP requests made via a connection."@en ;
-    rdfs:domain :Connection ;
-    rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> .
-
 :httpVersion a owl:DatatypeProperty ;
     rdfs:label "http version"@en ;
     rdfs:comment "The HTTP version of an HTTP message."@en ;
