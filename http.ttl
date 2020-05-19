@@ -197,6 +197,11 @@ mthd:PATCH a :Method  ;
     rdfs:domain :URI ;
     rdfs:comment "The fragment part of an URI."@en .
 
+:idRes a owl:DatatypeProperty, owl:FunctionalProperty ;
+    rdfs:label "resource"@en ;
+    rdfs:comment "Everything except the query part"@en ;
+    rdfs:domain :URI .
+
 ## -------- ##
 ## Headers. ##
 ## -------- ##
