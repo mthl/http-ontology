@@ -17,47 +17,49 @@
 ## Messages. ##
 ## --------- ##
 
-:Message a owl:Class, owl:AllDisjointClasses ;
+:Message a owl:Class ;
     rdfs:label "Message"@en ;
     rdfs:comment "An HTTP message."@en ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> ;
-    owl:members (:Request :Response) ;
+    owl:disjointUnionOf (:Request :Response) ;
     rdfs:subClassOf [
-        owl:intersectionOf ([
-                a owl:Restriction ;
-                owl:onProperty :body ;
-                owl:allValuesFrom cnt:Content ;
-                ] [
-                a owl:Restriction ;
-                owl:onProperty :hdr ;
-                owl:allValuesFrom :Header;
-                ])] .
+        a owl:Restriction ;
+        owl:onProperty :version ;
+        owl:someValuesFrom rdfs:Literal
+        ] .
 
 :Request a owl:Class ;
     rdfs:label "Request"@en ;
     rdfs:comment "An HTTP request."@en ;
-    rdfs:subClassOf [
-        owl:intersectionOf (:Message [
+    rdfs:subClassOf :Message ;
+    owl:equivalentClass [
+        owl:intersectionOf ([
                 a owl:Restriction ;
                 owl:onProperty :mthd ;
                 owl:someValuesFrom :Method ;
                 ] [
                 a owl:Restriction ;
                 owl:onProperty :uri ;
-                owl:someValuesFrom :URI;
-                ])] ;
+                owl:someValuesFrom :URI
+                ] [
+                a owl:Restriction ;
+                owl:onProperty hds:host ;
+                owl:someValuesFrom hds:Host ;
+                rdfs:comment "The Host header is required for requests" ;
+                rdfs:definedBy <https://tools.ietf.org/rfc/rfc7230#section-5.4>
+                ])];
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> .
 
-:Response a owl:Class, owl:AllDisjointClasses ;
+:Response a owl:Class ;
     rdfs:label "Response"@en ;
     rdfs:comment "An HTTP response."@en ;
-    owl:members (:InterimResponse :FinalResponse) ;
-    rdfs:subClassOf [
-        owl:intersectionOf (:Message [
-                a owl:Restriction ;
-                owl:onProperty :sc ;
-                owl:someValuesFrom :Status ;
-                ])] .
+    owl:disjointUnionOf (:InterimResponse :FinalResponse) ;
+    rdfs:subClassOf :Message ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty :sc ;
+        owl:someValuesFrom :Status
+        ] .
 
 :InterimResponse a owl:Class ;
     rdfs:label "Interim Response"@en ;
@@ -69,7 +71,7 @@
     rdfs:comment "An interim response."@en .
 
 :FinalResponse a owl:Class ;
-    rdfs:label "Final"@en ;
+    rdfs:label "Final Response"@en ;
     rdfs:subClassOf :Response, [ owl:complementOf :InterimResponse ] ;
     rdfs:comment "A final response."@en .
 
@@ -246,21 +248,21 @@ hds:isLocation a owl:ObjectProperty, owl:ReflexiveProperty ;
 :link a owl:ObjectProperty, owl:FunctionalProperty .
 
 hds:Location a owl:Class ;
-    rdfs:subClassOf [
-        a owl:Restriction ;
-        owl:onProperty hds:isLocation ;
-        owl:hasSelf true
-        ] , [
+    rdfs:label "Location Header" ;
+    rdfs:subClassOf :Header , [
         a owl:Restriction ;
         owl:onProperty :link ;
         owl:someValuesFrom :URI ;
+        ] , [
+        a owl:Restriction ;
+        owl:onProperty hds:isLocation ;
+        owl:hasSelf true
         ] ;
     owl:equivalentClass [
-        owl:intersectionOf (:Header [
-                a owl:Restriction ;
-                owl:onProperty :hdrName ;
-                owl:hasValue "Location" ;
-                ])] .
+        a owl:Restriction ;
+        owl:onProperty :hdrName ;
+        owl:hasValue "Location" ;
+        ] .
 
 hds:location a owl:ObjectProperty ;
     rdfs:label "location" ;
@@ -714,9 +716,9 @@ sc:VariantAlsoNegotiates a :Status ;
 ## Misc. ##
 ## ----- ##
 
-:httpVersion a owl:DatatypeProperty ;
-    rdfs:label "http version"@en ;
-    rdfs:comment "The HTTP version of an HTTP message."@en ;
+:version a owl:DatatypeProperty ;
+    rdfs:label "version"@en ;
+    rdfs:comment "The HTTP protocol version of an HTTP message."@en ;
     rdfs:domain :Message ;
     rdfs:range rdfs:Literal ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231> .
