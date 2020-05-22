@@ -239,17 +239,17 @@ mthd:PATCH a :Method  ;
 
 ### Location Header property
 
-hds:isLocationHeader a owl:ObjectProperty, owl:ReflexiveProperty ;
+hds:isLocation a owl:ObjectProperty, owl:ReflexiveProperty ;
     rdfs:label "location header?" ;
     rdfs:domain :Header ;
     rdfs:range :Header .
 
 :link a owl:ObjectProperty, owl:FunctionalProperty .
 
-hds:LocationHeader a owl:Class ;
+hds:Location a owl:Class ;
     rdfs:subClassOf [
         a owl:Restriction ;
-        owl:onProperty hds:isLocationHeader ;
+        owl:onProperty hds:isLocation ;
         owl:hasSelf true
         ] , [
         a owl:Restriction ;
@@ -267,7 +267,7 @@ hds:location a owl:ObjectProperty ;
     rdfs:label "location" ;
     rdfs:domain :Response ;
     rdfs:range :URI ;
-    owl:propertyChainAxiom (:hdr hds:isLocationHeader :link) .
+    owl:propertyChainAxiom (:hdr hds:isLocation :link) .
 
 ## ----------------- ##
 ## Query parameters. ##
