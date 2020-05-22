@@ -268,6 +268,34 @@ hds:location a owl:ObjectProperty ;
     rdfs:range :URI ;
     owl:propertyChainAxiom (:hdr hds:isLocation :link) .
 
+hds:isHost a owl:ObjectProperty, owl:ReflexiveProperty ;
+    rdfs:label "is Host header?" ;
+    rdfs:domain :Header ;
+    rdfs:range :Header .
+
+hds:Host a owl:Class ;
+    rdfs:label "Host Header"@en ;
+    rdfs:subClassOf :Header, [
+        a owl:Restriction ;
+        owl:onProperty hds:isHost ;
+        owl:hasSelf true
+        ] ;
+    owl:equivalentClass [
+        a owl:Restriction ;
+        owl:onProperty :hdrName ;
+        owl:hasValue "Host" ;
+        ] .
+
+hds:host a owl:ObjectProperty ;
+    rdfs:label "host"@en ;
+    rdfs:domain :Request ;
+    rdfs:range hds:Host ;
+    owl:propertyChainAxiom (:hdr hds:isHost) ;
+    rdfs:comment """
+This is effectively a functional property but OWL2 DL does not allow
+such property to be defined on non-simple properties.
+""" .
+
 ## ----------------- ##
 ## Query parameters. ##
 ## ----------------- ##
