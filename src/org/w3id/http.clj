@@ -43,6 +43,19 @@
         (run! println violations)
         (System/exit 1)))))
 
+(def widoco-args
+  ["-ontFile" "http.ttl"
+   "-outFolder" "doc"
+   "-getOntologyMetadata"
+   "-lang" "en"
+   "-confFile" "doc.properties"
+   "-webVowl"
+   "-displayDirectImportsOnly"
+   "-excludeIntroduction"])
+
+(defn gendoc []
+  (GuiController/main (into-array String widoco-args)))
+
 (defn strln
   "Join strings by inserting a newline character between them."
   [& strings]
@@ -79,17 +92,6 @@
   (println msg)
   (System/exit status))
 
-(def widoco-args
-  ["-ontFile" "http.ttl"
-   "-outFolder" "doc"
-   "-getOntologyMetadata"
-   "-lang" "en"
-   "-confFile" "doc.properties"
-   "-webVowl"
-   "-displayDirectImportsOnly"
-   "-excludeIntroduction"
-   "-rewriteAll"])
-
 (defn -main [& args]
   (let [opts (cli/parse-opts args cli-options)
         {:keys [options arguments errors summary]} opts
@@ -101,15 +103,6 @@
       :else
       (case command
         "check" (verify)
-        "gendoc" (let [doc (.toPath (io/file "doc"))
-                       idx (.toPath (io/file "doc" "index.html"))
-                       idx-en (.toPath (io/file "index-en.html"))
-                       attrs (make-array FileAttribute 0)
-                       linkopts (make-array LinkOption 0)]
-                   (or (Files/isDirectory doc linkopts)
-                       (Files/createDirectory doc attrs))
-                   (GuiController/main (into-array String widoco-args))
-                   (or (Files/isSymbolicLink idx)
-                       (Files/createSymbolicLink idx idx-en attrs)))
+        "gendoc" (gendoc)
         nil (exit 1 (help summary))
         (exit 1 (str "No command corresponds to '" command "'"))))))

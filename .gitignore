@@ -1,2 +1,10 @@
-/doc/
 /target/
+/doc/index-en.html
+/doc/provenance/
+/doc/sections/crossref-en.html
+/doc/sections/overview-en.html
+/doc/sections/references-en.html
+/doc/ontology.*
+/doc/readme.md
+/doc/resources/
+/doc/webvowl/

@@ -1,0 +1,48 @@
+<h2 id="desc" class="list">HTTP Ontology: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+The Hypertext Transfer Protocol (HTTP) is, together with the logical addressing
+(URI) and HTML, the basic building block of the Web.  While HTTP remains at the
+heart of Web development, current enterprise information systems also use it
+routinely for exchanges between heterogeneous programs: to this aim, all is
+needed is an HTTP server on the one side and an HTTP client on the
+other. Despite its apparent simplicity, the HTTP protocol is quite large, it
+covers all aspects of client-server communications, while keeping it open for
+potential evolutions. The size of the HTTP 1.1 specification which consists
+currently in 8 IETF RFCs, refined and extended by other RFCs, demonstrates that
+fact.  This specification defines constraints that impact not only the
+implementers of Web Servers but also application developers that are
+implementing request handlers: they need to ensure that their request handlers
+conform to the semantics of HTTP.  Our goal is to formalize the HTTP
+specification to be able to describe Web interactions in a sufficiently precise
+way for enabling a mechanized verification of protocol conformance.  Since the
+beginning of the Web, various proposals have been made to describe interactions
+between Web clients and a Web server, with different means and objectives. Many
+of them are "machine-readable" but are limited to the syntactic level and do
+not rely on an ontological description of HTTP interactions.  The main
+difficulty when describing Web interactions consists in taking into account the
+presence of hypermedia links in the representation of the Web resources. The
+point is that HTTP mixes the data and the control over that data. This makes
+things easy for humans (developers) to interact with.  However it is hard to
+describe it formally, and it is still difficult for machines to interact
+robustly when using it.
+
+The proposed ontology is a work in progress, compared to W3C HTTP Vocabulary in
+RDF it addresses the following challenges:
+
+1. HTTP message headers represent an associative array with heterogeneous value
+   types: we provide a way to describe headers in a generic manner while
+   enabling to express more precisions for specific ones such as the Location
+   header whose value is linked to a new resource.
+
+2. HTTP allows the usage of various representation formats in the body payload
+   by making use of Media Type declarations. This variability is required for
+   HTTP genericity, but it makes it difficult to formalize the interaction
+   aspect of the protocol regarding the exchanged content: we propose a way to
+   describe uniformly both the data and meta-data of messages for a subset of
+   the allowed content types.  3) URIs primary goal is to identify a resource,
+   however in the context of Web APIs the optional query part of the URI is
+   extensively used to parameterize the behavior of the server request
+   handler. We define a set of properties that can be used to represent the
+   various parts of an URI, in particular query parameters.
+<!-- More precisions, with examples, can be found here: link-to-report -->
+</span>
