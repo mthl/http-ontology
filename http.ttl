@@ -89,7 +89,7 @@
     rdfs:comment "The HTTP method used for the request."@en ;
     owl:equivalentClass [
         a owl:Restriction ;
-        owl:onProperty :methodName ;
+        owl:onProperty :mthdName ;
         owl:someValuesFrom :notEmptyToken ] .
 
 :mthd a owl:ObjectProperty, owl:FunctionalProperty ;
@@ -98,7 +98,7 @@
     rdfs:domain :Request ;
     rdfs:range :Method .
 
-:methodName a owl:DatatypeProperty, owl:FunctionalProperty ;
+:mthdName a owl:DatatypeProperty, owl:FunctionalProperty ;
     rdfs:label "method name"@en ;
     rdfs:comment "The HTTP method name used for the HTTP request."@en ;
     rdfs:domain :Method ;
@@ -115,47 +115,47 @@
 mthd:GET a :Method ;
     rdfs:label "GET" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.1> ;
-    :methodName "GET" .
+    :mthdName "GET" .
 
 mthd:HEAD a :Method  ;
     rdfs:label "HEAD" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.2> ;
-    :methodName "HEAD" .
+    :mthdName "HEAD" .
 
 mthd:POST a :Method  ;
     rdfs:label "POST" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.3> ;
-    :methodName "POST" .
+    :mthdName "POST" .
 
 mthd:PUT a :Method  ;
     rdfs:label "PUT" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.4> ;
-    :methodName "PUT" .
+    :mthdName "PUT" .
 
 mthd:DELETE a :Method  ;
     rdfs:label "DELETE" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.5> ;
-    :methodName "DELETE" .
+    :mthdName "DELETE" .
 
 mthd:CONNECT a :Method  ;
     rdfs:label "CONNECT" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.6> ;
-    :methodName "CONNECT" .
+    :mthdName "CONNECT" .
 
 mthd:OPTIONS a :Method  ;
     rdfs:label "OPTIONS" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.7> ;
-    :methodName "OPTIONS" .
+    :mthdName "OPTIONS" .
 
 mthd:TRACE a :Method  ;
     rdfs:label "TRACE" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.8> ;
-    :methodName "TRACE" .
+    :mthdName "TRACE" .
 
 mthd:PATCH a :Method  ;
     rdfs:label "PATCH" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc5789> ;
-    :methodName "PATCH" .
+    :mthdName "PATCH" .
 
 ## ---- ##
 ## URI. ##
