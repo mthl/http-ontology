@@ -93,7 +93,7 @@
         owl:someValuesFrom :notEmptyToken ] .
 
 :mthd a owl:ObjectProperty, owl:FunctionalProperty ;
-    rdfs:label "Method"@en ;
+    rdfs:label "method"@en ;
     rdfs:comment "The HTTP method used for the HTTP request."@en ;
     rdfs:domain :Request ;
     rdfs:range :Method .
