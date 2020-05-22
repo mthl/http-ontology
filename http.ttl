@@ -1,5 +1,4 @@
 @prefix : <http://w3id.org/http#> .
-@prefix mthd: <http://w3id.org/http/mthd#> .
 @prefix sc: <http://w3id.org/http/sc#> .
 @prefix hds: <http://w3id.org/http/headers#> .
 @prefix cnt: <http://w3id.org/http/content#> .
@@ -112,47 +111,47 @@
         owl:onDatatype xsd:token ;
         owl:withRestrictions ([ xsd:minLength 1])] .
 
-mthd:GET a :Method ;
+:GET a :Method ;
     rdfs:label "GET" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.1> ;
     :mthdName "GET" .
 
-mthd:HEAD a :Method  ;
+:HEAD a :Method ;
     rdfs:label "HEAD" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.2> ;
     :mthdName "HEAD" .
 
-mthd:POST a :Method  ;
+:POST a :Method ;
     rdfs:label "POST" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.3> ;
     :mthdName "POST" .
 
-mthd:PUT a :Method  ;
+:PUT a :Method ;
     rdfs:label "PUT" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.4> ;
     :mthdName "PUT" .
 
-mthd:DELETE a :Method  ;
+:DELETE a :Method;
     rdfs:label "DELETE" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.5> ;
     :mthdName "DELETE" .
 
-mthd:CONNECT a :Method  ;
+:CONNECT a :Method ;
     rdfs:label "CONNECT" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.6> ;
     :mthdName "CONNECT" .
 
-mthd:OPTIONS a :Method  ;
+:OPTIONS a :Method ;
     rdfs:label "OPTIONS" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.7> ;
     :mthdName "OPTIONS" .
 
-mthd:TRACE a :Method  ;
+:TRACE a :Method ;
     rdfs:label "TRACE" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc7231#section-4.3.8> ;
     :mthdName "TRACE" .
 
-mthd:PATCH a :Method  ;
+:PATCH a :Method ;
     rdfs:label "PATCH" ;
     rdfs:isDefinedBy <http://tools.ietf.org/rfc/rfc5789> ;
     :mthdName "PATCH" .
