@@ -60,7 +60,7 @@
                 ])] .
 
 :InterimResponse a owl:Class ;
-    rdfs:label "Interim"@en ;
+    rdfs:label "Interim Response"@en ;
     rdfs:subClassOf :Response, [
         a owl:Restriction ;
         owl:onProperty :sc ;
@@ -167,7 +167,7 @@
     rdfs:range :URI .
 
 :URI a owl:Class ;
-    rdfs:label "URI description" ;
+    rdfs:label "URI" ;
     rdfs:comment
     "A semantic description of the syntactic parts composing a URI."@en .
 
@@ -239,7 +239,7 @@
 ### Location Header property
 
 hds:isLocation a owl:ObjectProperty, owl:ReflexiveProperty ;
-    rdfs:label "location header?" ;
+    rdfs:label "is location header?" ;
     rdfs:domain :Header ;
     rdfs:range :Header .
 
@@ -343,7 +343,7 @@ cnt:about a owl:ObjectProperty ;
     rdfs:range sd:Graph .
 
 cnt:ContentAsRDF a owl:Class ;
-    rdfs:label "RDF Content"@en ;
+    rdfs:label "Content as RDF"@en ;
     rdfs:comment "RDF Content embedded in the body of an HTTP message"@en ;
     rdfs:subClassOf cnt:Content ;
     owl:equivalentClass [
