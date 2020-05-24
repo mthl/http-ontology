@@ -240,7 +240,7 @@
 
 ### Location Header property
 
-hds:isLocation a owl:ObjectProperty, owl:ReflexiveProperty ;
+hds:isLocation a owl:ObjectProperty ;
     rdfs:label "is location header?" ;
     rdfs:domain :Header ;
     rdfs:range :Header .
@@ -253,15 +253,15 @@ hds:Location a owl:Class ;
         a owl:Restriction ;
         owl:onProperty :link ;
         owl:someValuesFrom :URI ;
-        ] , [
-        a owl:Restriction ;
-        owl:onProperty hds:isLocation ;
-        owl:hasSelf true
         ] ;
     owl:equivalentClass [
         a owl:Restriction ;
         owl:onProperty :hdrName ;
         owl:hasValue "Location" ;
+        ] , [
+        a owl:Restriction ;
+        owl:onProperty hds:isLocation ;
+        owl:hasSelf true
         ] .
 
 hds:location a owl:ObjectProperty ;
@@ -270,22 +270,22 @@ hds:location a owl:ObjectProperty ;
     rdfs:range :URI ;
     owl:propertyChainAxiom (:hdr hds:isLocation :link) .
 
-hds:isHost a owl:ObjectProperty, owl:ReflexiveProperty ;
+hds:isHost a owl:ObjectProperty ;
     rdfs:label "is Host header?" ;
     rdfs:domain :Header ;
     rdfs:range :Header .
 
 hds:Host a owl:Class ;
     rdfs:label "Host Header"@en ;
-    rdfs:subClassOf :Header, [
-        a owl:Restriction ;
-        owl:onProperty hds:isHost ;
-        owl:hasSelf true
-        ] ;
+    rdfs:subClassOf :Header ;
     owl:equivalentClass [
         a owl:Restriction ;
         owl:onProperty :hdrName ;
         owl:hasValue "Host" ;
+        ] , [
+        a owl:Restriction ;
+        owl:onProperty hds:isHost ;
+        owl:hasSelf true
         ] .
 
 hds:host a owl:ObjectProperty ;
